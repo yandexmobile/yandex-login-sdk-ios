@@ -1,0 +1,7 @@
+workspace 'YandexLoginSDK.xcworkspace'
+project 'YandexLoginSDKSample.xcodeproj'
+platform :ios, '7.0'
+
+target :YandexLoginSDKSample do
+    pod 'YandexLoginSDK', path: '../YandexLoginSDK.podspec'
+end

@@ -1,0 +1,16 @@
+PODS:
+  - YandexLoginSDK (1.0.0)
+
+DEPENDENCIES:
+  - YandexLoginSDK (from `../YandexLoginSDK.podspec`)
+
+EXTERNAL SOURCES:
+  YandexLoginSDK:
+    :path: "../YandexLoginSDK.podspec"
+
+SPEC CHECKSUMS:
+  YandexLoginSDK: 9f3ab626d3d26825ea37ca9acd99cd1979da27ba
+
+PODFILE CHECKSUM: ebadf593b04e52bd896bd204470975270356ceb1
+
+COCOAPODS: 1.2.1
