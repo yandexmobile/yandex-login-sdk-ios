@@ -19,8 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		09CA94C765C2D3D8B9AC0EEF /* Pods-YandexLoginSDKSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YandexLoginSDKSample.release.xcconfig"; path = "../Pods/Target Support Files/Pods-YandexLoginSDKSample/Pods-YandexLoginSDKSample.release.xcconfig"; sourceTree = "<group>"; };
-		4EBCBE0CADAE77F10E3B907F /* Pods-YandexLoginSDKSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YandexLoginSDKSample.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-YandexLoginSDKSample/Pods-YandexLoginSDKSample.debug.xcconfig"; sourceTree = "<group>"; };
+		22A26958F6BE7AA251CB78C9 /* Pods-YandexLoginSDKSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YandexLoginSDKSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-YandexLoginSDKSample/Pods-YandexLoginSDKSample.release.xcconfig"; sourceTree = "<group>"; };
+		2C1C7993C3F56D11DD07C251 /* Pods-YandexLoginSDKSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YandexLoginSDKSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YandexLoginSDKSample/Pods-YandexLoginSDKSample.debug.xcconfig"; sourceTree = "<group>"; };
 		6A150072233BEDF97E62E683 /* libPods-YandexLoginSDKSample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YandexLoginSDKSample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B1933D61DD3396200EC4026 /* YxSDKSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YxSDKSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B1933F11DD3462D00EC4026 /* YandexLoginSDKSample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YandexLoginSDKSample-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -48,6 +48,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C402919536AEBE6775597B4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2C1C7993C3F56D11DD07C251 /* Pods-YandexLoginSDKSample.debug.xcconfig */,
+				22A26958F6BE7AA251CB78C9 /* Pods-YandexLoginSDKSample.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		9B1933CD1DD3396200EC4026 = {
 			isa = PBXGroup;
 			children = (
@@ -55,8 +64,8 @@
 				9B1933F01DD3461D00EC4026 /* Source */,
 				9B1933FF1DD34E5000EC4026 /* Resources */,
 				9B1933D71DD3396200EC4026 /* Products */,
-				E5010289EFB8BD87FE2306C0 /* Pods */,
 				D135189721C2AE639DD1E06A /* Frameworks */,
+				0C402919536AEBE6775597B4 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -98,15 +107,6 @@
 				6A150072233BEDF97E62E683 /* libPods-YandexLoginSDKSample.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		E5010289EFB8BD87FE2306C0 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				4EBCBE0CADAE77F10E3B907F /* Pods-YandexLoginSDKSample.debug.xcconfig */,
-				09CA94C765C2D3D8B9AC0EEF /* Pods-YandexLoginSDKSample.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -351,7 +351,7 @@
 		};
 		9B1933E91DD3396200EC4026 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4EBCBE0CADAE77F10E3B907F /* Pods-YandexLoginSDKSample.debug.xcconfig */;
+			baseConfigurationReference = 2C1C7993C3F56D11DD07C251 /* Pods-YandexLoginSDKSample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
@@ -368,7 +368,7 @@
 		};
 		9B1933EA1DD3396200EC4026 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 09CA94C765C2D3D8B9AC0EEF /* Pods-YandexLoginSDKSample.release.xcconfig */;
+			baseConfigurationReference = 22A26958F6BE7AA251CB78C9 /* Pods-YandexLoginSDKSample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;

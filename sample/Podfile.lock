@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../YandexLoginSDK.podspec"
 
 SPEC CHECKSUMS:
-  YandexLoginSDK: 9f3ab626d3d26825ea37ca9acd99cd1979da27ba
+  YandexLoginSDK: dbd3d0d916f1f1613f45dea193fcbc236343ecb3
 
 PODFILE CHECKSUM: ebadf593b04e52bd896bd204470975270356ceb1
 

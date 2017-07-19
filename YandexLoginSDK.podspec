@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.source               = { git: 'https://github.com/yandexmobile/yandex-login-sdk-ios.git', tag: s.version.to_s }
   s.platform             = :ios, '7.0'
   s.source_files         = 'lib/Classes/**/*.{h,m}'
-  s.private_header_files = 'lib/Classes/Private/*.h'
+  s.private_header_files = 'lib/Classes/Private/**/*.h'
   s.frameworks           = 'CoreGraphics', 'Security', 'UIKit'
   s.compiler_flags       = '-Werror', '-Wall', '-Wsign-compare', 
                            '-Wdocumentation-unknown-command', '-Wdocumentation', '-Wnewline-eof',
