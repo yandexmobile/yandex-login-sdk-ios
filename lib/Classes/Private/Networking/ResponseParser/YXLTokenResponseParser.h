@@ -1,6 +1,6 @@
 #import "YXLResponseParser.h"
 
-@interface YXLJwtResponseParser : NSObject <YXLResponseParser>
+@interface YXLTokenResponseParser : NSObject <YXLResponseParser>
 
 - (NSString *)parseData:(NSData *)data error:(NSError * __autoreleasing *)error;
 

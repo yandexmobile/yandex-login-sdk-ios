@@ -11,12 +11,13 @@
 		9B0BE9551DDC90F80042D98E /* TestUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0BE9541DDC90F80042D98E /* TestUtilities.swift */; };
 		9B0BE9571DDC912A0042D98E /* ResponseParserFactoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0BE9561DDC912A0042D98E /* ResponseParserFactoryTest.swift */; };
 		9B0BE95A1DDC947E0042D98E /* JwtResponseParserTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0BE9591DDC947E0042D98E /* JwtResponseParserTest.swift */; };
+		9B14B4EF1F824CDD00B3F8F2 /* YXLPkce.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B14B4EE1F824CDD00B3F8F2 /* YXLPkce.m */; };
+		9B14B4F21F824E7000B3F8F2 /* YXLTokenRequestParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B14B4F11F824E7000B3F8F2 /* YXLTokenRequestParams.m */; };
+		9B14B4F51F824EC200B3F8F2 /* YXLTokenResponseParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B14B4F41F824EC200B3F8F2 /* YXLTokenResponseParser.m */; };
 		9B1934101DD35B9900EC4026 /* YXLSdk.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B19340F1DD35B9900EC4026 /* YXLSdk.m */; };
-		9B267B051DDC5E6C008B105B /* YXLSpinnerLayerBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B267B041DDC5E6C008B105B /* YXLSpinnerLayerBuilder.m */; };
 		9B2B434E1DDB79830021A21B /* YXLJwtResponseParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B2B434A1DDB79830021A21B /* YXLJwtResponseParser.m */; };
 		9B2B434F1DDB79830021A21B /* YXLResponseParserFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B2B434D1DDB79830021A21B /* YXLResponseParserFactory.m */; };
-		9B2B43521DDB82600021A21B /* YXLSpinnerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B2B43511DDB82600021A21B /* YXLSpinnerController.m */; };
-		9B2B43551DDB82740021A21B /* YXLSpinnerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B2B43541DDB82740021A21B /* YXLSpinnerView.m */; };
+		9B3D3D001F8517E00019657E /* YXLHostProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B3D3CFF1F8517E00019657E /* YXLHostProvider.m */; };
 		9B50509C1DDB58C800E7BAA1 /* YXLLoginResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B5050821DDB58C800E7BAA1 /* YXLLoginResultModel.m */; };
 		9B50509D1DDB58C800E7BAA1 /* YXLObserversController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B5050841DDB58C800E7BAA1 /* YXLObserversController.m */; };
 		9B50509E1DDB58C800E7BAA1 /* YXLQueryUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B5050861DDB58C800E7BAA1 /* YXLQueryUtils.m */; };
@@ -26,13 +27,15 @@
 		9B5050A31DDB58C800E7BAA1 /* YXLHTTPOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B5050931DDB58C800E7BAA1 /* YXLHTTPOperation.m */; };
 		9B5050A41DDB58C800E7BAA1 /* YXLErrorUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B5050951DDB58C800E7BAA1 /* YXLErrorUtils.m */; };
 		9B5050A51DDB58C800E7BAA1 /* YXLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B5050971DDB58C800E7BAA1 /* YXLSessionManager.m */; };
-		9B5050A61DDB58C800E7BAA1 /* YXLLoginWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B50509A1DDB58C800E7BAA1 /* YXLLoginWebViewController.m */; };
+		9B5738811F827E8D001B2FFC /* TokenResponseParserTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5738801F827E8D001B2FFC /* TokenResponseParserTest.swift */; };
+		9B5738831F82848B001B2FFC /* PkceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5738821F82848B001B2FFC /* PkceTest.swift */; };
 		9B6584321E5C4D80009089A5 /* YXLInsecureStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B6584311E5C4D80009089A5 /* YXLInsecureStorage.m */; };
 		9B6584351E5C5FE7009089A5 /* YXLStatesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B6584341E5C5FE7009089A5 /* YXLStatesManager.m */; };
 		9B6584371E5C6FDF009089A5 /* StatesManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6584361E5C6FDF009089A5 /* StatesManagerTest.swift */; };
 		9B82EC251DDF51F700293556 /* YXLActivationValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B82EC241DDF51F700293556 /* YXLActivationValidator.m */; };
 		9B8FCDB81E5CC0780065F78E /* YXLStatisticsDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B8FCDB71E5CC0780065F78E /* YXLStatisticsDataProvider.m */; };
 		9B95510F1DD4B4B100A84596 /* YXLError.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B95510E1DD4B4B100A84596 /* YXLError.m */; };
+		9B97FF6E1F7EC94700B97882 /* ObserversControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B97FF6D1F7EC94700B97882 /* ObserversControllerTest.swift */; };
 		9BBD734D1E5769C10027F429 /* YXLSecureStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BBD734C1E5769C10027F429 /* YXLSecureStorage.m */; };
 		9BBD73521E576F950027F429 /* YXLStorageFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BBD73511E576F950027F429 /* YXLStorageFactory.m */; };
 		9BEAAF6A1DE61C2A00564305 /* URLParserTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEAAF691DE61C2A00564305 /* URLParserTest.swift */; };
@@ -68,22 +71,24 @@
 		9B0BE9561DDC912A0042D98E /* ResponseParserFactoryTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseParserFactoryTest.swift; sourceTree = "<group>"; };
 		9B0BE9581DDC91E60042D98E /* Tests-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Tests-Bridging-Header.h"; sourceTree = "<group>"; };
 		9B0BE9591DDC947E0042D98E /* JwtResponseParserTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JwtResponseParserTest.swift; sourceTree = "<group>"; };
+		9B14B4ED1F824CDD00B3F8F2 /* YXLPkce.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXLPkce.h; sourceTree = "<group>"; };
+		9B14B4EE1F824CDD00B3F8F2 /* YXLPkce.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YXLPkce.m; sourceTree = "<group>"; };
+		9B14B4F01F824E7000B3F8F2 /* YXLTokenRequestParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXLTokenRequestParams.h; sourceTree = "<group>"; };
+		9B14B4F11F824E7000B3F8F2 /* YXLTokenRequestParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YXLTokenRequestParams.m; sourceTree = "<group>"; };
+		9B14B4F31F824EC200B3F8F2 /* YXLTokenResponseParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXLTokenResponseParser.h; sourceTree = "<group>"; };
+		9B14B4F41F824EC200B3F8F2 /* YXLTokenResponseParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YXLTokenResponseParser.m; sourceTree = "<group>"; };
 		9B16055A1DDB6174006F9245 /* YXLDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXLDefinitions.h; sourceTree = "<group>"; };
 		9B1933C11DD3392400EC4026 /* libYandexLoginSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libYandexLoginSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B19340E1DD35B9900EC4026 /* YXLSdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXLSdk.h; sourceTree = "<group>"; };
 		9B19340F1DD35B9900EC4026 /* YXLSdk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YXLSdk.m; sourceTree = "<group>"; };
 		9B1934121DD35D1700EC4026 /* YXLObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXLObserver.h; sourceTree = "<group>"; };
-		9B267B031DDC5E6C008B105B /* YXLSpinnerLayerBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXLSpinnerLayerBuilder.h; sourceTree = "<group>"; };
-		9B267B041DDC5E6C008B105B /* YXLSpinnerLayerBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YXLSpinnerLayerBuilder.m; sourceTree = "<group>"; };
 		9B2B43491DDB79830021A21B /* YXLJwtResponseParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXLJwtResponseParser.h; sourceTree = "<group>"; };
 		9B2B434A1DDB79830021A21B /* YXLJwtResponseParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YXLJwtResponseParser.m; sourceTree = "<group>"; };
 		9B2B434B1DDB79830021A21B /* YXLResponseParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXLResponseParser.h; sourceTree = "<group>"; };
 		9B2B434C1DDB79830021A21B /* YXLResponseParserFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXLResponseParserFactory.h; sourceTree = "<group>"; };
 		9B2B434D1DDB79830021A21B /* YXLResponseParserFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YXLResponseParserFactory.m; sourceTree = "<group>"; };
-		9B2B43501DDB82600021A21B /* YXLSpinnerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXLSpinnerController.h; sourceTree = "<group>"; };
-		9B2B43511DDB82600021A21B /* YXLSpinnerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YXLSpinnerController.m; sourceTree = "<group>"; };
-		9B2B43531DDB82740021A21B /* YXLSpinnerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXLSpinnerView.h; sourceTree = "<group>"; };
-		9B2B43541DDB82740021A21B /* YXLSpinnerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YXLSpinnerView.m; sourceTree = "<group>"; };
+		9B3D3CFE1F8517E00019657E /* YXLHostProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YXLHostProvider.h; sourceTree = "<group>"; };
+		9B3D3CFF1F8517E00019657E /* YXLHostProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YXLHostProvider.m; sourceTree = "<group>"; };
 		9B5050811DDB58C800E7BAA1 /* YXLLoginResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXLLoginResultModel.h; sourceTree = "<group>"; };
 		9B5050821DDB58C800E7BAA1 /* YXLLoginResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YXLLoginResultModel.m; sourceTree = "<group>"; };
 		9B5050831DDB58C800E7BAA1 /* YXLObserversController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXLObserversController.h; sourceTree = "<group>"; };
@@ -103,8 +108,8 @@
 		9B5050951DDB58C800E7BAA1 /* YXLErrorUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YXLErrorUtils.m; sourceTree = "<group>"; };
 		9B5050961DDB58C800E7BAA1 /* YXLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXLSessionManager.h; sourceTree = "<group>"; };
 		9B5050971DDB58C800E7BAA1 /* YXLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YXLSessionManager.m; sourceTree = "<group>"; };
-		9B5050991DDB58C800E7BAA1 /* YXLLoginWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXLLoginWebViewController.h; sourceTree = "<group>"; };
-		9B50509A1DDB58C800E7BAA1 /* YXLLoginWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YXLLoginWebViewController.m; sourceTree = "<group>"; };
+		9B5738801F827E8D001B2FFC /* TokenResponseParserTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenResponseParserTest.swift; sourceTree = "<group>"; };
+		9B5738821F82848B001B2FFC /* PkceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PkceTest.swift; sourceTree = "<group>"; };
 		9B6584301E5C4D80009089A5 /* YXLInsecureStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXLInsecureStorage.h; sourceTree = "<group>"; };
 		9B6584311E5C4D80009089A5 /* YXLInsecureStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YXLInsecureStorage.m; sourceTree = "<group>"; };
 		9B6584331E5C5FE7009089A5 /* YXLStatesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXLStatesManager.h; sourceTree = "<group>"; };
@@ -118,6 +123,7 @@
 		9B95510D1DD4B4B100A84596 /* YXLError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXLError.h; sourceTree = "<group>"; };
 		9B95510E1DD4B4B100A84596 /* YXLError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YXLError.m; sourceTree = "<group>"; };
 		9B9551101DD4B4E000A84596 /* YandexLoginSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YandexLoginSDK.h; sourceTree = "<group>"; };
+		9B97FF6D1F7EC94700B97882 /* ObserversControllerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObserversControllerTest.swift; sourceTree = "<group>"; };
 		9BBD734B1E5769C10027F429 /* YXLSecureStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXLSecureStorage.h; sourceTree = "<group>"; };
 		9BBD734C1E5769C10027F429 /* YXLSecureStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YXLSecureStorage.m; sourceTree = "<group>"; };
 		9BBD734F1E576EA00027F429 /* YXLStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YXLStorage.h; sourceTree = "<group>"; };
@@ -153,8 +159,11 @@
 			children = (
 				9B0BE9531DDC90F80042D98E /* TestClasses */,
 				9B0BE9591DDC947E0042D98E /* JwtResponseParserTest.swift */,
+				9B97FF6D1F7EC94700B97882 /* ObserversControllerTest.swift */,
+				9B5738821F82848B001B2FFC /* PkceTest.swift */,
 				9B0BE9561DDC912A0042D98E /* ResponseParserFactoryTest.swift */,
 				9B6584361E5C6FDF009089A5 /* StatesManagerTest.swift */,
+				9B5738801F827E8D001B2FFC /* TokenResponseParserTest.swift */,
 				9BEAAF691DE61C2A00564305 /* URLParserTest.swift */,
 				9B0BE9581DDC91E60042D98E /* Tests-Bridging-Header.h */,
 				9B0BE94C1DDC90590042D98E /* Info.plist */,
@@ -204,7 +213,6 @@
 			children = (
 				9B50507E1DDB58C800E7BAA1 /* Core */,
 				9B5050891DDB58C800E7BAA1 /* Networking */,
-				9B5050981DDB58C800E7BAA1 /* UI */,
 			);
 			path = Private;
 			sourceTree = "<group>";
@@ -230,6 +238,8 @@
 				9B2B434B1DDB79830021A21B /* YXLResponseParser.h */,
 				9B2B434C1DDB79830021A21B /* YXLResponseParserFactory.h */,
 				9B2B434D1DDB79830021A21B /* YXLResponseParserFactory.m */,
+				9B14B4F31F824EC200B3F8F2 /* YXLTokenResponseParser.h */,
+				9B14B4F41F824EC200B3F8F2 /* YXLTokenResponseParser.m */,
 			);
 			path = ResponseParser;
 			sourceTree = "<group>";
@@ -241,11 +251,15 @@
 				9BBD734A1E5769A90027F429 /* Storage */,
 				9B82EC231DDF51F700293556 /* YXLActivationValidator.h */,
 				9B82EC241DDF51F700293556 /* YXLActivationValidator.m */,
+				9B3D3CFE1F8517E00019657E /* YXLHostProvider.h */,
+				9B3D3CFF1F8517E00019657E /* YXLHostProvider.m */,
 				9B16055A1DDB6174006F9245 /* YXLDefinitions.h */,
 				9B5050811DDB58C800E7BAA1 /* YXLLoginResultModel.h */,
 				9B5050821DDB58C800E7BAA1 /* YXLLoginResultModel.m */,
 				9B5050831DDB58C800E7BAA1 /* YXLObserversController.h */,
 				9B5050841DDB58C800E7BAA1 /* YXLObserversController.m */,
+				9B14B4ED1F824CDD00B3F8F2 /* YXLPkce.h */,
+				9B14B4EE1F824CDD00B3F8F2 /* YXLPkce.m */,
 				9B5050851DDB58C800E7BAA1 /* YXLQueryUtils.h */,
 				9B5050861DDB58C800E7BAA1 /* YXLQueryUtils.m */,
 				9B6584331E5C5FE7009089A5 /* YXLStatesManager.h */,
@@ -281,23 +295,10 @@
 				9B50508B1DDB58C800E7BAA1 /* YXLJwtRequestParams.h */,
 				9B50508C1DDB58C800E7BAA1 /* YXLJwtRequestParams.m */,
 				9B50508D1DDB58C800E7BAA1 /* YXLRequestParams.h */,
+				9B14B4F01F824E7000B3F8F2 /* YXLTokenRequestParams.h */,
+				9B14B4F11F824E7000B3F8F2 /* YXLTokenRequestParams.m */,
 			);
 			path = RequestParams;
-			sourceTree = "<group>";
-		};
-		9B5050981DDB58C800E7BAA1 /* UI */ = {
-			isa = PBXGroup;
-			children = (
-				9B5050991DDB58C800E7BAA1 /* YXLLoginWebViewController.h */,
-				9B50509A1DDB58C800E7BAA1 /* YXLLoginWebViewController.m */,
-				9B2B43501DDB82600021A21B /* YXLSpinnerController.h */,
-				9B2B43511DDB82600021A21B /* YXLSpinnerController.m */,
-				9B267B031DDC5E6C008B105B /* YXLSpinnerLayerBuilder.h */,
-				9B267B041DDC5E6C008B105B /* YXLSpinnerLayerBuilder.m */,
-				9B2B43531DDB82740021A21B /* YXLSpinnerView.h */,
-				9B2B43541DDB82740021A21B /* YXLSpinnerView.m */,
-			);
-			path = UI;
 			sourceTree = "<group>";
 		};
 		9BBD734A1E5769A90027F429 /* Storage */ = {
@@ -415,11 +416,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B5738811F827E8D001B2FFC /* TokenResponseParserTest.swift in Sources */,
 				9B6584371E5C6FDF009089A5 /* StatesManagerTest.swift in Sources */,
 				9B0BE9571DDC912A0042D98E /* ResponseParserFactoryTest.swift in Sources */,
 				9B0BE9551DDC90F80042D98E /* TestUtilities.swift in Sources */,
+				9B5738831F82848B001B2FFC /* PkceTest.swift in Sources */,
 				9BEAAF6A1DE61C2A00564305 /* URLParserTest.swift in Sources */,
 				9B0BE95A1DDC947E0042D98E /* JwtResponseParserTest.swift in Sources */,
+				9B97FF6E1F7EC94700B97882 /* ObserversControllerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,8 +432,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B5050A41DDB58C800E7BAA1 /* YXLErrorUtils.m in Sources */,
+				9B14B4F21F824E7000B3F8F2 /* YXLTokenRequestParams.m in Sources */,
+				9B14B4F51F824EC200B3F8F2 /* YXLTokenResponseParser.m in Sources */,
 				9B2B434E1DDB79830021A21B /* YXLJwtResponseParser.m in Sources */,
 				9B50509E1DDB58C800E7BAA1 /* YXLQueryUtils.m in Sources */,
+				9B3D3D001F8517E00019657E /* YXLHostProvider.m in Sources */,
 				9B5050A11DDB58C800E7BAA1 /* YXLHTTPClient.m in Sources */,
 				9B82EC251DDF51F700293556 /* YXLActivationValidator.m in Sources */,
 				9B6584321E5C4D80009089A5 /* YXLInsecureStorage.m in Sources */,
@@ -438,18 +445,15 @@
 				9B2B434F1DDB79830021A21B /* YXLResponseParserFactory.m in Sources */,
 				9B95510F1DD4B4B100A84596 /* YXLError.m in Sources */,
 				9B8FCDB81E5CC0780065F78E /* YXLStatisticsDataProvider.m in Sources */,
-				9B5050A61DDB58C800E7BAA1 /* YXLLoginWebViewController.m in Sources */,
-				9B2B43521DDB82600021A21B /* YXLSpinnerController.m in Sources */,
-				9B267B051DDC5E6C008B105B /* YXLSpinnerLayerBuilder.m in Sources */,
 				9B5050A51DDB58C800E7BAA1 /* YXLSessionManager.m in Sources */,
 				9B5050A31DDB58C800E7BAA1 /* YXLHTTPOperation.m in Sources */,
 				9BBD734D1E5769C10027F429 /* YXLSecureStorage.m in Sources */,
 				9BF6E2E91DDB5BAD005244B0 /* YXLMainQueueAsyncExecutor.m in Sources */,
+				9B14B4EF1F824CDD00B3F8F2 /* YXLPkce.m in Sources */,
 				9B50509C1DDB58C800E7BAA1 /* YXLLoginResultModel.m in Sources */,
 				9B6584351E5C5FE7009089A5 /* YXLStatesManager.m in Sources */,
 				9B1934101DD35B9900EC4026 /* YXLSdk.m in Sources */,
 				9BBD73521E576F950027F429 /* YXLStorageFactory.m in Sources */,
-				9B2B43551DDB82740021A21B /* YXLSpinnerView.m in Sources */,
 				9B5050A01DDB58C800E7BAA1 /* YXLJwtRequestParams.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -469,6 +473,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				INFOPLIST_FILE = YandexLoginSDKTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Yandex.YandexLoginSDKTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -481,6 +486,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				INFOPLIST_FILE = YandexLoginSDKTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Yandex.YandexLoginSDKTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

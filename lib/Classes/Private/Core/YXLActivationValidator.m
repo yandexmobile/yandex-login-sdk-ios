@@ -15,14 +15,27 @@
         NSString *description = [NSString stringWithFormat:@"No %@ URL scheme in queries schemes", YXLURLParser.openURLScheme];
         NSString *recovery = [NSString stringWithFormat:@"Add %@ to LSApplicationQueriesSchemes in Info.plist", YXLURLParser.openURLScheme];
         error = [self errorWithCode:YXLActivationErrorCodeNoQuerySchemeInInfoPList description:description recovery:recovery];
+    } else if (NO == [self infoPlistContainsScheme:[YXLURLParser redirectURLSchemeWithAppId:appId]]) {
+        NSString *scheme = [YXLURLParser redirectURLSchemeWithAppId:appId];
+        NSString *description = [NSString stringWithFormat:@"No %@ URL scheme", scheme];
+        NSString *recovery = [NSString stringWithFormat:@"Add %@ to CFBundleURLTypes in Info.plist", scheme];
+        error = [self errorWithCode:YXLActivationErrorCodeNoSchemeInInfoPList description:description recovery:recovery];
     }
     return error;
 }
 
 + (BOOL)infoPlistContainsQueriesScheme:(NSString *)scheme
 {
-    NSDictionary *infoDictionary = [NSBundle mainBundle].infoDictionary;
+    NSDictionary *infoDictionary = NSBundle.mainBundle.infoDictionary;
     return [infoDictionary[@"LSApplicationQueriesSchemes"] containsObject:scheme];
+}
+
++ (BOOL)infoPlistContainsScheme:(NSString *)scheme
+{
+    NSDictionary *infoDictionary = NSBundle.mainBundle.infoDictionary;
+    return [infoDictionary[@"CFBundleURLTypes"] ?: @[] indexOfObjectPassingTest:^BOOL(NSDictionary *item, NSUInteger idx, BOOL *stop) {
+        return [item[@"CFBundleURLSchemes"] containsObject:scheme];
+    }] != NSNotFound;
 }
 
 + (NSError *)errorWithCode:(YXLActivationErrorCode)code

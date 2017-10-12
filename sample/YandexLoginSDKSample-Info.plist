@@ -15,7 +15,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>200</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
@@ -23,6 +23,18 @@
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>yandexauth</string>
+		<string>yandexauth2</string>
+	</array>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>YandexLoginSDK</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>yx57a8133c69d947388a67164dfdbc46d3</string>
+			</array>
+		</dict>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>

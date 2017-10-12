@@ -11,5 +11,6 @@
 - (NSString *)generateNewState;
 - (BOOL)isValidState:(NSString *)state;
 - (void)deleteState:(NSString *)state;
+- (void)deleteAllStates;
 
 @end

@@ -12,7 +12,7 @@ class HomeViewController : UITableViewController, YXLObserver {
     override func viewDidLoad() {
         super.viewDidLoad()
         YXLSdk.shared.add(observer: self)
-        title = "Yandex SDK Sample"
+        title = "Yandex SDK Sample v. \(YXLSdk.sdkVersion)"
         sectionControllers = [ buttonSectionController, logoutSectionController ]
     }
 
@@ -30,7 +30,7 @@ class HomeViewController : UITableViewController, YXLObserver {
 
     private func loginPressed() {
         setStatus(nil)
-        YXLSdk.shared.authorize(withParentViewController: self)
+        YXLSdk.shared.authorize()
     }
 
     private func logoutPressed() {

@@ -19,8 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		22A26958F6BE7AA251CB78C9 /* Pods-YandexLoginSDKSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YandexLoginSDKSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-YandexLoginSDKSample/Pods-YandexLoginSDKSample.release.xcconfig"; sourceTree = "<group>"; };
-		2C1C7993C3F56D11DD07C251 /* Pods-YandexLoginSDKSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YandexLoginSDKSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YandexLoginSDKSample/Pods-YandexLoginSDKSample.debug.xcconfig"; sourceTree = "<group>"; };
+		5A5F1065F7E72C0D44BDB14A /* Pods-YandexLoginSDKSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YandexLoginSDKSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-YandexLoginSDKSample/Pods-YandexLoginSDKSample.release.xcconfig"; sourceTree = "<group>"; };
+		5F019C6E1327E1B0101683CB /* Pods-YandexLoginSDKSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YandexLoginSDKSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YandexLoginSDKSample/Pods-YandexLoginSDKSample.debug.xcconfig"; sourceTree = "<group>"; };
 		6A150072233BEDF97E62E683 /* libPods-YandexLoginSDKSample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YandexLoginSDKSample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B1933D61DD3396200EC4026 /* YxSDKSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YxSDKSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B1933F11DD3462D00EC4026 /* YandexLoginSDKSample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YandexLoginSDKSample-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -48,15 +48,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0C402919536AEBE6775597B4 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				2C1C7993C3F56D11DD07C251 /* Pods-YandexLoginSDKSample.debug.xcconfig */,
-				22A26958F6BE7AA251CB78C9 /* Pods-YandexLoginSDKSample.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		9B1933CD1DD3396200EC4026 = {
 			isa = PBXGroup;
 			children = (
@@ -64,8 +55,8 @@
 				9B1933F01DD3461D00EC4026 /* Source */,
 				9B1933FF1DD34E5000EC4026 /* Resources */,
 				9B1933D71DD3396200EC4026 /* Products */,
+				E5010289EFB8BD87FE2306C0 /* Pods */,
 				D135189721C2AE639DD1E06A /* Frameworks */,
-				0C402919536AEBE6775597B4 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -109,6 +100,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E5010289EFB8BD87FE2306C0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5F019C6E1327E1B0101683CB /* Pods-YandexLoginSDKSample.debug.xcconfig */,
+				5A5F1065F7E72C0D44BDB14A /* Pods-YandexLoginSDKSample.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -145,6 +145,7 @@
 					9B1933D51DD3396200EC4026 = {
 						CreatedOnToolsVersion = 7.3.1;
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.SafariKeychain = {
 								enabled = 1;
@@ -191,13 +192,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-YandexLoginSDKSample-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		3A1BE743B4189F035A9A8409 /* [CP] Copy Pods Resources */ = {
@@ -351,15 +355,17 @@
 		};
 		9B1933E91DD3396200EC4026 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2C1C7993C3F56D11DD07C251 /* Pods-YandexLoginSDKSample.debug.xcconfig */;
+			baseConfigurationReference = 5F019C6E1327E1B0101683CB /* Pods-YandexLoginSDKSample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = YxSDKSample.entitlements;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "YandexLoginSDKSample-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.yandex.loginsdk.sample;
 				PRODUCT_NAME = YxSDKSample;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "YandexLoginSDKSample-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -368,15 +374,17 @@
 		};
 		9B1933EA1DD3396200EC4026 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 22A26958F6BE7AA251CB78C9 /* Pods-YandexLoginSDKSample.release.xcconfig */;
+			baseConfigurationReference = 5A5F1065F7E72C0D44BDB14A /* Pods-YandexLoginSDKSample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = YxSDKSample.entitlements;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "YandexLoginSDKSample-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.yandex.loginsdk.sample;
 				PRODUCT_NAME = YxSDKSample;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "YandexLoginSDKSample-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};

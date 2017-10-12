@@ -27,4 +27,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         YXLSdk.shared.processUserActivity(userActivity)
         return true
     }
+
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        return YXLSdk.shared.handleOpen(url, sourceApplication: sourceApplication)
+    }
+
+    @available(iOS 9.0, *)
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        return YXLSdk.shared.handleOpen(url, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String)
+    }
 }

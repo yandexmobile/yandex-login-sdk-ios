@@ -3,6 +3,7 @@
 #import "YXLSecureStorage.h"
 
 static NSString *const kYXLLoginResultStorageKey = @"YandexLoginSdkToken";
+static NSString *const kYXLPkceStorageKey = @"YandexLoginSdkCode";
 static NSString *const kYXLStatesStorageKey = @"ru.yandex.loginsdk.states";
 
 @implementation YXLStorageFactory
@@ -10,6 +11,11 @@ static NSString *const kYXLStatesStorageKey = @"ru.yandex.loginsdk.states";
 + (id<YXLStorage>)loginResultStorage
 {
     return [[YXLSecureStorage alloc] initWithKey:kYXLLoginResultStorageKey];
+}
+
++ (id<YXLStorage>)pkceStorage
+{
+    return [[YXLSecureStorage alloc] initWithKey:kYXLPkceStorageKey];
 }
 
 + (id<YXLStorage>)statesStorage

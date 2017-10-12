@@ -5,29 +5,23 @@
 #import "YXLJwtRequestParams.h"
 #import "YXLHTTPClient.h"
 #import "YXLLoginResultModel.h"
-#ifdef YXL_USE_WEBVIEW
-#import "YXLLoginWebViewController.h"
-#endif
 #import "YXLObserversController.h"
-#import "YXLSpinnerController.h"
+#import "YXLPkce.h"
 #import "YXLStatesManager.h"
 #import "YXLStorage.h"
 #import "YXLStorageFactory.h"
+#import "YXLTokenRequestParams.h"
 #import "YXLURLParser.h"
 
-#ifdef YXL_USE_WEBVIEW
-@interface YXLSdk () <YXLLoginWebViewControllerDelegate>
-#else
 @interface YXLSdk ()
-#endif
 
 @property (nonatomic, copy) NSString *appId;
 @property (nonatomic, strong, readonly) YXLObserversController *observersController;
 @property (nonatomic, strong, readonly) YXLHTTPClient *httpClient;
 @property (nonatomic, strong, readonly) id<YXLStorage> loginResultStorage;
+@property (nonatomic, strong, readonly) id<YXLStorage> pkceStorage;
 @property (nonatomic, strong, readonly) YXLStatesManager *statesManager;
 @property (nonatomic, strong) id<YXLLoginResult> loginResult;
-@property (nonatomic, weak) UIViewController *presentedViewController;
 @property (nonatomic, assign, readonly, getter=isActivated) BOOL activated;
 
 @end
@@ -44,6 +38,11 @@
     return sharedInstance;
 }
 
++ (NSString *)sdkVersion
+{
+    return @"2.0.0";
+}
+
 - (instancetype)init
 {
     self = [super init];
@@ -51,6 +50,7 @@
         _observersController = [[YXLObserversController alloc] init];
         _httpClient = [[YXLHTTPClient alloc] init];
         _loginResultStorage = YXLStorageFactory.loginResultStorage;
+        _pkceStorage = YXLStorageFactory.pkceStorage;
         _loginResult = [YXLLoginResultModel modelWithDictionaryRepresentation:self.loginResultStorage.storedObject];
         _statesManager = [[YXLStatesManager alloc] initWithStorage:YXLStorageFactory.statesStorage];
     }
@@ -73,7 +73,15 @@
 - (BOOL)processUserActivity:(NSUserActivity *)userActivity
 {
     NSParameterAssert(userActivity);
-    return self.activated && [userActivity.activityType isEqualToString:NSUserActivityTypeBrowsingWeb] && [self processURL:userActivity.webpageURL];
+    return (self.activated &&
+            [userActivity.activityType isEqualToString:NSUserActivityTypeBrowsingWeb] &&
+            [self processUniversalLinkURL:userActivity.webpageURL]);
+}
+
+- (BOOL)handleOpenURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication
+{
+    NSParameterAssert(url);
+    return self.activated && [self processURL:url];
 }
 
 - (void)addObserver:(id<YXLObserver>)observer
@@ -93,49 +101,66 @@
     return UIDevice.currentDevice.systemVersion.floatValue >= 9.f;
 }
 
-- (void)authorizeWithParentViewController:(UIViewController *)parentViewController
+- (void)authorize
 {
-    NSParameterAssert(parentViewController);
     if (NO == self.activated) {
-        [self notifyAuthorizationDidFinishWithErrorCode:YXLErrorCodeNotActivated];
-        return;
-    }
-    if (self.displayingAuthorizationController) {
-        [self notifyAuthorizationDidFinishWithErrorCode:YXLErrorCodeIsAuthorizing];
+        [self.observersController notifyLoginDidFinishWithError:[self errorWithCode:YXLErrorCodeNotActivated]];
         return;
     }
     if (self.loginResult != nil) {
-        [self notifyAuthorizationDidFinishWithResult:self.loginResult];
+        [self.observersController notifyLoginDidFinishWithResult:self.loginResult];
         return;
     }
     NSString *state = self.statesManager.generateNewState;
-    dispatch_block_t openAuthorizationURLBlock = ^{
-        NSURL *url = [YXLURLParser authorizationURLWithAppId:self.appId state:state];
-        if (self.universalLinksAvailable) {
-            [self authorizeWithOpenURL:url completionHandler:nil];
-        }
-        else {
-            [self displayWebViewControllerWithURL:url state:state parentViewController:parentViewController];
-        }
-    };
+    YXLPkce *pkce = [[YXLPkce alloc] init];
+    self.pkceStorage.storedObject = pkce.dictionaryRepresentation;
+    [self tryOpenUrlWithState:state pkce:pkce.codeChallenge];
+}
 
-    NSURL *openURL = [YXLURLParser openURLWithAppId:self.appId state:state];
-    if (self.universalLinksAvailable && [UIApplication.sharedApplication canOpenURL:openURL]) {
+- (void)tryOpenUrlWithState:(NSString *)state pkce:(NSString *)pkce
+{
+    NSURL *openURL = [YXLURLParser openURLWithAppId:self.appId state:state pkce:pkce];
+    if ([UIApplication.sharedApplication canOpenURL:openURL]) {
         [self authorizeWithOpenURL:openURL completionHandler:^(BOOL success) {
             if (NO == success) {
-                openAuthorizationURLBlock();
+                [self tryOpenUniversalLinkUrlWithState:state pkce:pkce];
             }
         }];
     }
     else {
-        openAuthorizationURLBlock();
+        [self tryOpenUniversalLinkUrlWithState:state pkce:pkce];
     }
+}
+
+- (void)tryOpenUniversalLinkUrlWithState:(NSString *)state pkce:(NSString *)pkce
+{
+    NSURL *openURL = [YXLURLParser openURLUniversalLinkWithAppId:self.appId state:state];
+    if (self.universalLinksAvailable && [UIApplication.sharedApplication canOpenURL:openURL]) {
+        [self authorizeWithOpenURL:openURL completionHandler:^(BOOL success) {
+            if (NO == success) {
+                [self openBrowserUrlWithState:state pkce:pkce];
+            }
+        }];
+    }
+    else {
+        [self openBrowserUrlWithState:state pkce:pkce];
+    }
+}
+
+- (void)openBrowserUrlWithState:(NSString *)state pkce:(NSString *)pkce
+{
+    NSURL *url = [YXLURLParser authorizationURLWithAppId:self.appId state:state pkce:pkce];
+    [self authorizeWithOpenURL:url completionHandler:nil];
 }
 
 - (void)authorizeWithOpenURL:(NSURL *)url completionHandler:(void (^)(BOOL success))completion
 {
     UIApplication *application = UIApplication.sharedApplication;
+#ifdef __IPHONE_11_0
+    if (@available(iOS 10_0, *)) {
+#else
     if ([application respondsToSelector:@selector(openURL:options:completionHandler:)]) {
+#endif
         NSDictionary *options = @{ UIApplicationOpenURLOptionUniversalLinksOnly: @NO };
         [application openURL:url options:options completionHandler:completion];
     }
@@ -147,60 +172,62 @@
     }
 }
 
-- (void)displayWebViewControllerWithURL:(NSURL *)url
-                                  state:(NSString *)state
-                   parentViewController:(UIViewController *)parentViewController
-{
-#ifdef YXL_USE_WEBVIEW
-    UIViewController *controller = [[YXLLoginWebViewController alloc] initWithURL:url state:state delegate:self];
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:controller];
-    navigationController.modalPresentationStyle = UIModalPresentationFormSheet;
-    navigationController.navigationBar.translucent = NO;
-
-    self.presentedViewController = controller;
-    [parentViewController presentViewController:navigationController animated:YES completion:NULL];
-#endif
-}
-
 - (BOOL)isActivated
 {
     return self.appId != nil;
-}
-
-- (BOOL)isDisplayingAuthorizationController
-{
-    return self.presentedViewController != nil;
 }
 
 - (void)logout
 {
     self.loginResult = nil;
     self.loginResultStorage.storedObject = nil;
+    self.pkceStorage.storedObject = nil;
+    [self.statesManager deleteAllStates];
 }
 
-- (void)dismissViewController:(UIViewController *)viewController
+- (NSError *)errorWithCode:(YXLErrorCode)code
 {
-    [viewController.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
-    if (viewController == self.presentedViewController) {
-        self.presentedViewController = nil;
-    }
-}
-
-- (void)notifyAuthorizationDidFinishWithErrorCode:(YXLErrorCode)code
-{
-    [self.observersController notifyLoginDidFinishWithError:[NSError errorWithDomain:kYXLErrorDomain code:code userInfo:nil]];
-}
-
-- (void)notifyAuthorizationDidFinishWithResult:(id<YXLLoginResult>)result
-{
-    [self.observersController notifyLoginDidFinishWithResult:result];
+    return [NSError errorWithDomain:kYXLErrorDomain code:code userInfo:nil];
 }
 
 - (BOOL)processURL:(NSURL *)URL
 {
     BOOL result = NO;
-    NSString *token = [YXLURLParser tokenFromURL:URL];
+    NSString *code = [YXLURLParser codeFromURL:URL];
     NSString *state = [YXLURLParser stateFromURL:URL];
+    BOOL isValidState = (state == nil) ? NO : [self.statesManager isValidState:state];
+    if (state != nil) {
+        [self.statesManager deleteState:state];
+    }
+    YXLPkce *pkce = [YXLPkce modelWithDictionaryRepresentation:self.pkceStorage.storedObject];
+    if (code != nil && isValidState && pkce != nil) {
+        [self requestTokenByCode:code codeVerifier:pkce.codeVerifier];
+        result = YES;
+    }
+    else {
+        NSError *error;
+        if (code != nil && NO == isValidState) {
+            error = [self errorWithCode:YXLErrorCodeInvalidState];
+        }
+        else if (pkce == nil) {
+            error = [self errorWithCode:YXLErrorCodeInvalidCode];
+        }
+        else {
+            error = [YXLURLParser errorFromURL:URL];
+        }
+        if (error != nil) {
+            [self.observersController notifyLoginDidFinishWithError:error];
+            result = YES;
+        }
+    }
+    return result;
+}
+
+- (BOOL)processUniversalLinkURL:(NSURL *)URL
+{
+    BOOL result = NO;
+    NSString *token = [YXLURLParser tokenFromUniversalLinkURL:URL];
+    NSString *state = [YXLURLParser stateFromUniversalLinkURL:URL];
     BOOL isValidState = (state == nil) ? NO : [self.statesManager isValidState:state];
     if (state != nil) {
         [self.statesManager deleteState:state];
@@ -212,13 +239,12 @@
     else {
         NSError *error;
         if (token != nil && NO == isValidState) {
-            error = [NSError errorWithDomain:kYXLErrorDomain code:YXLErrorCodeInvalidState userInfo:nil];
+            error = [self errorWithCode:YXLErrorCodeInvalidState];
         }
         else {
-            error = [YXLURLParser errorFromURL:URL];
+            error = [YXLURLParser errorFromUniversalLinkURL:URL];
         }
         if (error != nil) {
-            [self dismissViewController:self.presentedViewController];
             [self.observersController notifyLoginDidFinishWithError:error];
             result = YES;
         }
@@ -229,9 +255,6 @@
 - (void)requestJWTByToken:(NSString *)token
 {
     NSParameterAssert(token);
-    UIViewController *controller = self.presentedViewController;
-    YXLSpinnerController *spinnerController = (controller != nil) ? [[YXLSpinnerController alloc] init] : nil;
-    [spinnerController showInViewController:controller];
     id<YXLRequestParams> requestParams = [[YXLJwtRequestParams alloc] initWithToken:token];
     WEAKIFY_SELF;
     [self.httpClient executeRequestWithParameters:requestParams success:^(NSString *jwt) {
@@ -239,37 +262,27 @@
         YXLLoginResultModel *result = [[YXLLoginResultModel alloc] initWithToken:token jwt:jwt];
         self.loginResult = result;
         self.loginResultStorage.storedObject = result.dictionaryRepresentation;
-        [spinnerController hide];
-        [self dismissViewController:controller];
-        [self notifyAuthorizationDidFinishWithResult:result];
+        [self.observersController notifyLoginDidFinishWithResult:result];
     } failure:^(NSError *error) {
         STRONGIFY_SELF;
-        [spinnerController hide];
-        [self dismissViewController:controller];
         [self.observersController notifyLoginDidFinishWithError:error];
     }];
 }
 
-#ifdef YXL_USE_WEBVIEW
-
-#pragma mark - YXLLoginWebViewControllerDelegate
-
-- (BOOL)loginWebViewController:(YXLLoginWebViewController *)controller shouldStartLoadURL:(NSURL *)URL
+- (void)requestTokenByCode:(NSString *)code codeVerifier:(NSString *)codeVerifier
 {
-    BOOL result = YES;
-    if (controller == self.presentedViewController) {
-        result = (NO == [self processURL:URL]);
-    }
-    return result;
+    NSParameterAssert(code);
+    id<YXLRequestParams> requestParams = [[YXLTokenRequestParams alloc] initWithCode:code
+                                                                        codeVerifier:codeVerifier
+                                                                               appId:self.appId];
+    WEAKIFY_SELF;
+    [self.httpClient executeRequestWithParameters:requestParams success:^(NSString *token) {
+        STRONGIFY_SELF;
+        [self requestJWTByToken:token];
+    } failure:^(NSError *error) {
+        STRONGIFY_SELF;
+        [self.observersController notifyLoginDidFinishWithError:error];
+    }];
 }
-
-- (void)loginWebViewControllerDidClose:(YXLLoginWebViewController *)controller
-{
-    [self.statesManager deleteState:controller.state];
-    [self dismissViewController:controller];
-    [self notifyAuthorizationDidFinishWithErrorCode:YXLErrorCodeCancelled];
-}
-
-#endif
 
 @end

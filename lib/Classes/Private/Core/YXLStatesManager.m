@@ -66,4 +66,9 @@ static const NSInteger kYXLStatesMaxCount = 50;
     self.storage.storedObject = mutableStoredObject;
 }
 
+- (void)deleteAllStates
+{
+    self.storage.storedObject = nil;
+}
+
 @end

@@ -9,6 +9,9 @@ NS_ASSUME_NONNULL_BEGIN
 /** Shared instance of YXLSdk. */
 @property (class, strong, readonly) YXLSdk *shared;
 
+/** Retrieve the current iOS SDK version. */
+@property (class, copy, readonly) NSString *sdkVersion;
+
 + (instancetype)new NS_UNAVAILABLE;
 - (instancetype)init NS_UNAVAILABLE;
 
@@ -37,7 +40,28 @@ NS_ASSUME_NONNULL_BEGIN
          return true
      }
  */
-- (BOOL)processUserActivity:(NSUserActivity *)userActivity;
+- (BOOL)processUserActivity:(NSUserActivity *)userActivity NS_AVAILABLE_IOS(8_0);
+
+/** Checks passed url for authentication code.
+
+ @param url The URL as passed to [UIApplicationDelegate application:openURL:sourceApplication:annotation:].
+ @param sourceApplication The sourceApplication as passed to [UIApplicationDelegate application:openURL:sourceApplication:annotation:].
+ @return YES if the url was intended for the YandexLoginSDK, NO if not.
+
+ @discussion Should be called from [UIApplicationDelegate application:openURL:sourceApplication:annotation:] method
+ of the AppDelegate for your app. It should be invoked for the proper processing of responses during interaction
+ with the browser or SafariViewController.
+ @code
+      func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+           return YXLSdk.shared.handleOpen(url, sourceApplication: sourceApplication)
+      }
+
+      @available(iOS 9.0, *)
+      func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+           return YXLSdk.shared.handleOpen(url, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String)
+      }
+ */
+- (BOOL)handleOpenURL:(NSURL *)url sourceApplication:(nullable NSString *)sourceApplication;
 
 /** Adds an observer.
 
@@ -54,19 +78,13 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)removeObserver:(id<YXLObserver>)observer NS_SWIFT_NAME(remove(observer:));
 
 /**
- Starts authorization process to retrieve token. Opens Yandex application or webview for access request.
+ Starts authorization process to retrieve token. Opens Yandex application or browser for access request.
 
- @param parentViewController Parent controller to present YXLSdk controllers.
- 
  @discussion Notifies observers if authorization is finished with success or error.
  If YXLSdk is not activated, notifies observers with error YXLErrorCodeNotActivated.
- If called when authorizing is YES, doesn't start authorization process and notifies observers with error YXLErrorCodeIsAuthorizing.
  Caches success authorization result and uses it in the next calls.
  */
-- (void)authorizeWithParentViewController:(UIViewController *)parentViewController;
-
-/** YES if authorization controller is being shown. */
-@property (nonatomic, assign, readonly, getter=isDisplayingAuthorizationController) BOOL displayingAuthorizationController;
+- (void)authorize;
 
 /** Clears all saved data. */
 - (void)logout;
