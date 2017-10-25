@@ -15,6 +15,10 @@
         NSString *description = [NSString stringWithFormat:@"No %@ URL scheme in queries schemes", YXLURLParser.openURLScheme];
         NSString *recovery = [NSString stringWithFormat:@"Add %@ to LSApplicationQueriesSchemes in Info.plist", YXLURLParser.openURLScheme];
         error = [self errorWithCode:YXLActivationErrorCodeNoQuerySchemeInInfoPList description:description recovery:recovery];
+    } else if (NO == [self infoPlistContainsQueriesScheme:YXLURLParser.openURLSchemeUniversalLink]) {
+        NSString *description = [NSString stringWithFormat:@"No %@ URL scheme in queries schemes", YXLURLParser.openURLSchemeUniversalLink];
+        NSString *recovery = [NSString stringWithFormat:@"Add %@ to LSApplicationQueriesSchemes in Info.plist", YXLURLParser.openURLSchemeUniversalLink];
+        error = [self errorWithCode:YXLActivationErrorCodeNoQuerySchemeInInfoPList description:description recovery:recovery];
     } else if (NO == [self infoPlistContainsScheme:[YXLURLParser redirectURLSchemeWithAppId:appId]]) {
         NSString *scheme = [YXLURLParser redirectURLSchemeWithAppId:appId];
         NSString *description = [NSString stringWithFormat:@"No %@ URL scheme", scheme];

@@ -119,6 +119,14 @@ class URLParserTest: XCTestCase {
         XCTAssertNil(YXLURLParser.error(fromUniversalLinkURL: URL(string: "http://oauth.yandex.ru#errors=access_denied")))
         XCTAssertNil(YXLURLParser.error(fromUniversalLinkURL: URL(string: "http://oauth.yandex.ru?error=access_denied")))
     }
+    func testIsOpenURL() {
+        XCTAssertTrue(YXLURLParser.isOpen(URL(string: "yxtest.app://oauth.yandex.ru#errors=access_denied"), appId: appId))
+        XCTAssertTrue(YXLURLParser.isOpen(URL(string: "yxapp://oauth.yandex.ru#errors=access_denied"), appId: "app"))
+        XCTAssertFalse(YXLURLParser.isOpen(URL(string: "yxtest.app://oauth.yandex.ru#errors=access_denied"), appId: "app"))
+        XCTAssertFalse(YXLURLParser.isOpen(URL(string: "vk123://oauth.yandex.ru#errors=access_denied"), appId: appId))
+        XCTAssertTrue(YXLURLParser.isOpen(URL(string: redirectUri), appId: appId))
+        XCTAssertFalse(YXLURLParser.isOpen(URL(string: redirectUriUniversalLink), appId: appId))
+    }
 
     private var redirectUri: String {
         return "yx" + appId + ":///auth/finish?platform=ios"

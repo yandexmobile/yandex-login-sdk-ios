@@ -40,7 +40,7 @@
 
 + (NSString *)sdkVersion
 {
-    return @"2.0.0";
+    return @"2.0.1";
 }
 
 - (instancetype)init
@@ -192,6 +192,9 @@
 
 - (BOOL)processURL:(NSURL *)URL
 {
+    if (NO == [YXLURLParser isOpenURL:URL appId:self.appId]) {
+        return NO;
+    }
     BOOL result = NO;
     NSString *code = [YXLURLParser codeFromURL:URL];
     NSString *state = [YXLURLParser stateFromURL:URL];

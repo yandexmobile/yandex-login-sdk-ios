@@ -166,6 +166,11 @@ struct {
     return [self parametersFromFragmentOfURL:url][kYXLURLStateKey];
 }
 
++ (BOOL)isOpenURL:(NSURL *)url appId:(NSString *)appId
+{
+    return [url.scheme isEqualToString:[self redirectURLSchemeWithAppId:appId]];
+}
+
 + (NSDictionary<NSString *, NSString *> *)parametersFromURL:(NSURL *)url
 {
     NSURLComponents *components = [[NSURLComponents alloc] initWithURL:url resolvingAgainstBaseURL:NO];

@@ -52,7 +52,49 @@ class HomeViewController : UITableViewController, YXLObserver {
     }
 
     func loginDidFinishWithError(_ error: Error) {
-        setStatus(String(describing: error))
+        setStatus("Error! " + stringForError(error))
+    }
+
+    private func stringForError(_ error: Error) -> String {
+        guard (error as NSError).domain == kYXLErrorDomain, let code = YXLErrorCode(rawValue: (error as NSError).code) else {
+            return String(describing: error)
+        }
+        switch code {
+        case .notActivated:
+            return "Sdk is not activated"
+        case .cancelled:
+            return "Authorization controller closed by user"
+        case .denied:
+            return "User denied access in permissions page"
+        case .invalidClient:
+            return "AppId authentication failed"
+        case .invalidScope:
+            return "The requested scope is invalid, unknown, or malformed"
+        case .other:
+            return "Other error " + String(describing: error)
+        case .requestError:
+            return "Internal HTTP request error"
+        case .requestConnectionError:
+            return "HTTP internet connection error"
+        case .requestSSLError:
+            return "HTTP SSL error"
+        case .requestNetworkError:
+            return "Other HTTP error"
+        case .requestResponseError:
+            return "Bad response for HTTP request (not NSHTTPURLResponse or status code not in 200..299)"
+        case .requestEmptyDataError:
+            return "Empty data returns on some HTTP request"
+        case .requestTokenError:
+            return "Bad answer for token request"
+        case .requestJwtError:
+            return "Bad answer for jwt request"
+        case .requestJwtInternalError:
+            return "Jwt request internal error"
+        case .invalidState:
+            return "Invalid state parameter"
+        case .invalidCode:
+            return "Invalid authorization code"
+        }
     }
 }
 

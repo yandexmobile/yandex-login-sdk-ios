@@ -19,4 +19,6 @@
 + (NSString *)tokenFromUniversalLinkURL:(NSURL *)url;
 + (NSString *)stateFromUniversalLinkURL:(NSURL *)url;
 
++ (BOOL)isOpenURL:(NSURL *)url appId:(NSString *)appId;
+
 @end
