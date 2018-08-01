@@ -123,7 +123,7 @@
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
     if (httpResponse.statusCode < 200 || httpResponse.statusCode >= 300) {
         return [YXLErrorUtils errorWithCode:YXLErrorCodeRequestResponseError
-                                     reason:[NSString stringWithFormat:@"Bad status code %zd", httpResponse.statusCode]];
+                                     reason:[NSString stringWithFormat:@"Bad status code %ld", (long)httpResponse.statusCode]];
     }
     return nil;
 }
