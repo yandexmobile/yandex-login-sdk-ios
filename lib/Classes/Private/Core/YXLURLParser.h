@@ -1,5 +1,7 @@
 #import <Foundation/Foundation.h>
 
+@class YXLAuthParameters;
+
 @interface YXLURLParser : NSObject
 
 @property (class, copy, readonly) NSString *openURLScheme;
@@ -7,9 +9,9 @@
 
 + (NSString *)redirectURLSchemeWithAppId:(NSString *)appId;
 
-+ (NSURL *)authorizationURLWithAppId:(NSString *)appId state:(NSString *)state pkce:(NSString *)pkce;
-+ (NSURL *)openURLWithAppId:(NSString *)appId state:(NSString *)state pkce:(NSString *)pkce;
-+ (NSURL *)openURLUniversalLinkWithAppId:(NSString *)appId state:(NSString *)state;
++ (NSURL *)authorizationURLWithParameters:(YXLAuthParameters *)parameters;
++ (NSURL *)openURLWithParameters:(YXLAuthParameters *)parameters;
++ (NSURL *)openURLUniversalLinkWithParameters:(YXLAuthParameters *)parameters;
 
 + (NSError *)errorFromURL:(NSURL *)url;
 + (NSString *)codeFromURL:(NSURL *)url;

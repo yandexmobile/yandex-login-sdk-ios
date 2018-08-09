@@ -1,4 +1,5 @@
 #import "YXLURLParser.h"
+#import "YXLAuthParameters.h"
 #import "YXLError.h"
 #import "YXLHostProvider.h"
 #import "YXLQueryUtils.h"
@@ -27,6 +28,8 @@ static NSString *const kYXLURLStateKey = @"state";
 static NSString *const kYXLURLPkceKey = @"code_challenge";
 static NSString *const kYXLURLPkceMethodKey = @"code_challenge_method";
 static NSString *const kYXLURLPkceMethodSha = @"S256";
+static NSString *const kYXLURLUidKey = @"uid";
+static NSString *const kYXLURLLoginKey = @"login_hint";
 
 static NSString *const kYXLURLErrorKey = @"error";
 static NSString *const kYXLURLTokenKey = @"access_token";
@@ -59,54 +62,59 @@ struct {
     return [NSString stringWithFormat:kYXLURLRedirectUriSchemeFormat, appId];
 }
 
-+ (NSURL *)authorizationURLWithAppId:(NSString *)appId state:(NSString *)state pkce:(NSString *)pkce
++ (NSURL *)authorizationURLWithParameters:(YXLAuthParameters *)parameters
 {
-    NSParameterAssert(pkce);
+    NSParameterAssert(parameters);
     return [self urlWithPath:[NSString stringWithFormat:kYXLURLOAuthPathFormat, YXLHostProvider.oauthHost]
-                       appId:appId
-                       state:state
-                        pkce:pkce
+                  parameters:parameters
         statisticsParameters:YXLStatisticsDataProvider.statisticsParameters];
 }
 
-+ (NSURL *)openURLWithAppId:(NSString *)appId state:(NSString *)state pkce:(NSString *)pkce
++ (NSURL *)openURLWithParameters:(YXLAuthParameters *)parameters
 {
-    NSParameterAssert(pkce);
+    NSParameterAssert(parameters);
     NSURLComponents *components = [[NSURLComponents alloc] init];
     components.scheme = self.openURLScheme;
     components.host = kYXLURLOpenUrlHost;
-    return [self urlWithPath:components.URL.absoluteString appId:appId state:state pkce:pkce statisticsParameters:nil];
+    return [self urlWithPath:components.URL.absoluteString parameters:parameters statisticsParameters:nil];
 }
 
-+ (NSURL *)openURLUniversalLinkWithAppId:(NSString *)appId state:(NSString *)state
++ (NSURL *)openURLUniversalLinkWithParameters:(YXLAuthParameters *)parameters
 {
     NSURLComponents *components = [[NSURLComponents alloc] init];
     components.scheme = self.openURLSchemeUniversalLink;
     components.host = kYXLURLOpenUrlHost;
-    return [self urlWithPath:components.URL.absoluteString appId:appId state:state pkce:nil statisticsParameters:nil];
+    YXLAuthParameters *queryParameters = [[YXLAuthParameters alloc] initWithAppId:parameters.appId
+                                                                            state:parameters.state
+                                                                             pkce:nil
+                                                                              uid:0
+                                                                            login:nil];
+    return [self urlWithPath:components.URL.absoluteString parameters:queryParameters statisticsParameters:nil];
 }
 
 + (NSURL *)urlWithPath:(NSString *)path
-                 appId:(NSString *)appId
-                 state:(NSString *)state
-                  pkce:(NSString *)pkce
+            parameters:(YXLAuthParameters *)parameters
   statisticsParameters:(NSDictionary *)statisticsParameters
 {
-    NSMutableDictionary *parameters = [statisticsParameters ?: @{} mutableCopy];
-    parameters[kYXLURLResponseTypeKey] = (pkce != nil) ? kYXLURLResponseTypeCode : kYXLURLResponseTypeToken;
-    parameters[kYXLURLForceConfirmKey] = kYXLURLForceConfirmYes;
-    parameters[kYXLURLOriginKey] = kYXLURLOriginIos;
-    parameters[kYXLURLClientIdKey] = appId;
-    parameters[kYXLURLStateKey] = state;
-    if (pkce != nil) {
-        parameters[kYXLURLPkceKey] = pkce;
-        parameters[kYXLURLPkceMethodKey] = kYXLURLPkceMethodSha;
-        parameters[kYXLURLRedirectUriKey] = [self redirectURIWithAppId:appId];
+    NSMutableDictionary *queryParameters = [statisticsParameters ?: @{} mutableCopy];
+    queryParameters[kYXLURLResponseTypeKey] = (parameters.pkce != nil) ? kYXLURLResponseTypeCode : kYXLURLResponseTypeToken;
+    queryParameters[kYXLURLForceConfirmKey] = kYXLURLForceConfirmYes;
+    queryParameters[kYXLURLOriginKey] = kYXLURLOriginIos;
+    queryParameters[kYXLURLClientIdKey] = parameters.appId;
+    queryParameters[kYXLURLStateKey] = parameters.state;
+    if (parameters.pkce != nil) {
+        queryParameters[kYXLURLPkceKey] = parameters.pkce;
+        queryParameters[kYXLURLPkceMethodKey] = kYXLURLPkceMethodSha;
+        queryParameters[kYXLURLRedirectUriKey] = [self redirectURIWithAppId:parameters.appId];
     }
     else {
-        parameters[kYXLURLRedirectUriKey] = [self redirectURIForUniversalLinkWithAppId:appId];
+        queryParameters[kYXLURLRedirectUriKey] = [self redirectURIForUniversalLinkWithAppId:parameters.appId];
     }
-    NSString *query = [YXLQueryUtils queryStringFromParameters:parameters];
+    queryParameters[kYXLURLLoginKey] = parameters.login;
+    if (parameters.uid > 0) {
+        queryParameters[kYXLURLUidKey] = [NSString stringWithFormat:@"%lld", parameters.uid];
+    }
+    NSString *query = [YXLQueryUtils queryStringFromParameters:queryParameters];
     return [NSURL URLWithString:[NSString stringWithFormat:@"%@?%@", path, query]];
 }
 

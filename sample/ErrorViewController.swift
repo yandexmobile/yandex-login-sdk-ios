@@ -1,4 +1,4 @@
-final class ErrorViewController : HomeViewController {
+final class ErrorViewController: BaseViewController {
     var errorText: String = "" {
         didSet {
             reloadSections()
@@ -7,12 +7,12 @@ final class ErrorViewController : HomeViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Yandex SDK Sample v. \(YXLSdk.sdkVersion)"
         reloadSections()
     }
 
     private func reloadSections() {
-        let controller = TextSectionController(text: "Activation error")
-        controller.footer = errorText
-        sectionControllers = [ controller ]
+        let item = ActionCellItem(text: "Activation error", type: .text)
+        sections = [ SectionItem(title: nil, footer: errorText, items: [item]) ]
     }
 }

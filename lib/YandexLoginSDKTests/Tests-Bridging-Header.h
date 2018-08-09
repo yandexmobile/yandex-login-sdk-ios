@@ -1,4 +1,5 @@
 #import "YandexLoginSDK.h"
+#import "YXLAuthParameters.h"
 #import "YXLHostProvider.h"
 #import "YXLObserversController.h"
 #import "YXLPkce.h"

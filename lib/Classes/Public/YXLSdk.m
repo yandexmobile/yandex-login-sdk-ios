@@ -1,5 +1,6 @@
 #import "YXLSdk.h"
 #import "YXLActivationValidator.h"
+#import "YXLAuthParameters.h"
 #import "YXLDefinitions.h"
 #import "YXLError.h"
 #import "YXLJwtRequestParams.h"
@@ -40,7 +41,7 @@
 
 + (NSString *)sdkVersion
 {
-    return @"2.0.1";
+    return @"2.0.2";
 }
 
 - (instancetype)init
@@ -81,7 +82,12 @@
 - (BOOL)handleOpenURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication
 {
     NSParameterAssert(url);
-    return self.activated && [self processURL:url];
+    return self.activated && [self isUrlRelatedToSdk:url] && [self processURL:url];
+}
+
+- (BOOL)isUrlRelatedToSdk:(NSURL *)url
+{
+    return self.appId != nil ? [YXLURLParser isOpenURL:url appId:self.appId] : NO;
 }
 
 - (void)addObserver:(id<YXLObserver>)observer
@@ -103,6 +109,11 @@
 
 - (void)authorize
 {
+    [self authorizeWithUid:0 login:nil];
+}
+
+- (void)authorizeWithUid:(long long)uid login:(NSString *)login
+{
     if (NO == self.activated) {
         [self.observersController notifyLoginDidFinishWithError:[self errorWithCode:YXLErrorCodeNotActivated]];
         return;
@@ -114,42 +125,47 @@
     NSString *state = self.statesManager.generateNewState;
     YXLPkce *pkce = [[YXLPkce alloc] init];
     self.pkceStorage.storedObject = pkce.dictionaryRepresentation;
-    [self tryOpenUrlWithState:state pkce:pkce.codeChallenge];
+    YXLAuthParameters *parameters = [[YXLAuthParameters alloc] initWithAppId:self.appId
+                                                                       state:state
+                                                                        pkce:pkce.codeChallenge
+                                                                         uid:uid
+                                                                       login:login.length > 0 ? login : nil];
+    [self tryOpenUrlWithParameters:parameters];
 }
 
-- (void)tryOpenUrlWithState:(NSString *)state pkce:(NSString *)pkce
+- (void)tryOpenUrlWithParameters:(YXLAuthParameters *)parameters
 {
-    NSURL *openURL = [YXLURLParser openURLWithAppId:self.appId state:state pkce:pkce];
+    NSURL *openURL = [YXLURLParser openURLWithParameters:parameters];
     if ([UIApplication.sharedApplication canOpenURL:openURL]) {
         [self authorizeWithOpenURL:openURL completionHandler:^(BOOL success) {
             if (NO == success) {
-                [self tryOpenUniversalLinkUrlWithState:state pkce:pkce];
+                [self tryOpenUniversalLinkUrlWithParameters:parameters];
             }
         }];
     }
     else {
-        [self tryOpenUniversalLinkUrlWithState:state pkce:pkce];
+        [self tryOpenUniversalLinkUrlWithParameters:parameters];
     }
 }
 
-- (void)tryOpenUniversalLinkUrlWithState:(NSString *)state pkce:(NSString *)pkce
+- (void)tryOpenUniversalLinkUrlWithParameters:(YXLAuthParameters *)parameters
 {
-    NSURL *openURL = [YXLURLParser openURLUniversalLinkWithAppId:self.appId state:state];
+    NSURL *openURL = [YXLURLParser openURLUniversalLinkWithParameters:parameters];
     if (self.universalLinksAvailable && [UIApplication.sharedApplication canOpenURL:openURL]) {
         [self authorizeWithOpenURL:openURL completionHandler:^(BOOL success) {
             if (NO == success) {
-                [self openBrowserUrlWithState:state pkce:pkce];
+                [self openBrowserUrlWithParameters:parameters];
             }
         }];
     }
     else {
-        [self openBrowserUrlWithState:state pkce:pkce];
+        [self openBrowserUrlWithParameters:parameters];
     }
 }
 
-- (void)openBrowserUrlWithState:(NSString *)state pkce:(NSString *)pkce
+- (void)openBrowserUrlWithParameters:(YXLAuthParameters *)parameters
 {
-    NSURL *url = [YXLURLParser authorizationURLWithAppId:self.appId state:state pkce:pkce];
+    NSURL *url = [YXLURLParser authorizationURLWithParameters:parameters];
     [self authorizeWithOpenURL:url completionHandler:nil];
 }
 
@@ -192,9 +208,6 @@
 
 - (BOOL)processURL:(NSURL *)URL
 {
-    if (NO == [YXLURLParser isOpenURL:URL appId:self.appId]) {
-        return NO;
-    }
     BOOL result = NO;
     NSString *code = [YXLURLParser codeFromURL:URL];
     NSString *state = [YXLURLParser stateFromURL:URL];

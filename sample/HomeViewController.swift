@@ -1,36 +1,35 @@
-class HomeViewController : UITableViewController, YXLObserver {
-    var sectionControllers: [SectionController] = [] {
-        didSet {
-            tableView.reloadData()
-        }
-    }
-
-    private enum Section: Int {
-        case loginButton = 0, options
-    }
+final class HomeViewController: BaseViewController, YXLObserver {
+    private var uid: String?
+    private var login: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         YXLSdk.shared.add(observer: self)
         title = "Yandex SDK Sample v. \(YXLSdk.sdkVersion)"
-        sectionControllers = [ buttonSectionController, logoutSectionController ]
+        sections = [loginSection, logoutSection]
+    }
+    
+    private var loginSection: SectionItem {
+        let items: [CellItem] = [
+            InputCellItem(label: "Uid:", placeholder: "expected uid or 0",
+                          valueBlock: { [unowned self] in self.uid },
+                          action: { [unowned self] text in self.uid = text }),
+            InputCellItem(label: "Login:", placeholder: "login hint",
+                          valueBlock: { [unowned self] in self.login },
+                          action: { [unowned self] text in self.login = text }),
+            ActionCellItem(text: "Login", type: .button) { [unowned self] in self.loginPressed() }
+            ]
+        return SectionItem(title: nil, footer: nil, items: items)
     }
 
-    private var buttonSectionController: SectionController {
-        return ButtonSectionController(text: "Login", textColor: ColorUtils.buttonTextColor) { [unowned self] in
-            self.loginPressed()
-        }
-    }
-
-    private var logoutSectionController: SectionController {
-        return ButtonSectionController(text: "Logout", textColor: ColorUtils.destructiveButtonTextColor) { [unowned self] in
-            self.logoutPressed()
-        }
+    private var logoutSection: SectionItem {
+        let item = ActionCellItem(text: "Logout", type: .destructiveButton) { [unowned self] in self.logoutPressed() }
+        return SectionItem(title: nil, footer: nil, items: [item])
     }
 
     private func loginPressed() {
         setStatus(nil)
-        YXLSdk.shared.authorize()
+        YXLSdk.shared.authorize(withUid: Int64(uid ?? "") ?? 0, login: login)
     }
 
     private func logoutPressed() {
@@ -43,8 +42,8 @@ class HomeViewController : UITableViewController, YXLObserver {
     }
 
     private func setStatus(_ string: String?) {
-        sectionControllers[Section.loginButton.rawValue].footer = string
-        tableView.reloadSections(IndexSet(integer: Section.loginButton.rawValue), with: .none)
+        sections[sections.count - 1].footer = string
+        reload()
     }
 
     func loginDidFinish(with result: YXLLoginResult) {
@@ -95,31 +94,5 @@ class HomeViewController : UITableViewController, YXLObserver {
         case .invalidCode:
             return "Invalid authorization code"
         }
-    }
-}
-
-extension HomeViewController {
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return sectionControllers.count
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sectionControllers[section].tableView(tableView, numberOfRowsInSection: section)
-    }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return sectionControllers[indexPath.section].tableView(tableView, cellForRowAt: indexPath)
-    }
-
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        sectionControllers[indexPath.section].tableView(tableView, didSelectRowAt: indexPath)
-    }
-
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sectionControllers[section].tableView(tableView, titleForHeaderInSection: section)
-    }
-
-    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        return sectionControllers[section].tableView(tableView, titleForFooterInSection: section)
     }
 }

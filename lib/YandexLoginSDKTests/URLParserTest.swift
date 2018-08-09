@@ -2,62 +2,82 @@ import XCTest
 
 class URLParserTest: XCTestCase {
     private let appId = "test.app"
-    private let state = "test.state"
+    private let parameters = YXLAuthParameters(appId: "test.app", state: "test.state",
+                                               pkce: "test.pkce", uid: 1, login: "test.login")!
 
     func testAuthorizationURL() {
-        let url = YXLURLParser.authorizationURL(withAppId: appId, state: state, pkce: "test.pkce")!
+        let url = YXLURLParser.authorizationURL(with: parameters)!
         XCTAssertEqual(url.scheme, "https")
         XCTAssertEqual(url.host, YXLHostProvider.oauthHost)
         XCTAssertEqual(url.path, "/authorize")
         if #available(iOS 8.0, *) {
             let queryItems = NSURLComponents(url: url, resolvingAgainstBaseURL: false)!.queryItems!
-            XCTAssertTrue(queryItems.contains(URLQueryItem(name: "client_id", value: appId)))
+            XCTAssertTrue(queryItems.contains(URLQueryItem(name: "client_id", value: parameters.appId)))
             XCTAssertTrue(queryItems.contains(URLQueryItem(name: "response_type", value: "code")))
             XCTAssertTrue(queryItems.contains(URLQueryItem(name: "redirect_uri", value: redirectUri)))
-            XCTAssertTrue(queryItems.contains(URLQueryItem(name: "state", value: state)))
+            XCTAssertTrue(queryItems.contains(URLQueryItem(name: "state", value: parameters.state)))
             XCTAssertTrue(queryItems.contains(URLQueryItem(name: "force_confirm", value: "yes")))
             XCTAssertTrue(queryItems.contains(URLQueryItem(name: "origin", value: "yandex_auth_sdk_ios")))
-            XCTAssertTrue(queryItems.contains(URLQueryItem(name: "code_challenge", value: "test.pkce")))
+            XCTAssertTrue(queryItems.contains(URLQueryItem(name: "code_challenge", value: parameters.pkce)))
             XCTAssertTrue(queryItems.contains(URLQueryItem(name: "code_challenge_method", value: "S256")))
+            XCTAssertTrue(queryItems.contains(URLQueryItem(name: "uid", value: "1")))
+            XCTAssertTrue(queryItems.contains(URLQueryItem(name: "login_hint", value: "test.login")))
+        }
+    }
+    func testAuthorizationURLNoPkce() {
+        let url = YXLURLParser.authorizationURL(with:
+            YXLAuthParameters(appId: "test.app", state: "test.state", pkce: nil, uid: 0, login: nil))!
+        XCTAssertEqual(url.scheme, "https")
+        XCTAssertEqual(url.host, YXLHostProvider.oauthHost)
+        XCTAssertEqual(url.path, "/authorize")
+        if #available(iOS 8.0, *) {
+            let queryItems = NSURLComponents(url: url, resolvingAgainstBaseURL: false)!.queryItems!
+            XCTAssertTrue(queryItems.contains(URLQueryItem(name: "client_id", value: parameters.appId)))
+            XCTAssertTrue(queryItems.contains(URLQueryItem(name: "response_type", value: "token")))
+            XCTAssertTrue(queryItems.contains(URLQueryItem(name: "redirect_uri", value: redirectUriUniversalLink)))
+            XCTAssertTrue(queryItems.contains(URLQueryItem(name: "state", value: parameters.state)))
+            XCTAssertTrue(queryItems.contains(URLQueryItem(name: "force_confirm", value: "yes")))
+            XCTAssertTrue(queryItems.contains(URLQueryItem(name: "origin", value: "yandex_auth_sdk_ios")))
+            XCTAssertFalse(queryItems.contains(URLQueryItem(name: "code_challenge_method", value: "S256")))
         }
     }
     func testAddStatistics() {
-        let parameters = YXLStatisticsDataProvider.statisticsParameters!
-        XCTAssertGreaterThan(parameters.count, 0)
+        let statisticsParameters = YXLStatisticsDataProvider.statisticsParameters!
+        XCTAssertGreaterThan(statisticsParameters.count, 0)
         if #available(iOS 8.0, *) {
-            let url = YXLURLParser.authorizationURL(withAppId: appId, state: state, pkce: "test.pkce")!
+            let url = YXLURLParser.authorizationURL(with: parameters)!
             let queryItems = NSURLComponents(url: url, resolvingAgainstBaseURL: false)!.queryItems!
-            for parameter in parameters {
+            for parameter in statisticsParameters {
                 XCTAssertTrue(queryItems.contains(URLQueryItem(name: parameter.key, value: parameter.value)))
             }
         }
     }
     func testOpenURL() {
-        let url = YXLURLParser.openURL(withAppId: appId, state: state, pkce: "test.pkce")!
+        let url = YXLURLParser.openURL(with: parameters)!
         XCTAssertEqual(url.scheme, "yandexauth2")
         XCTAssertEqual(url.host, "authorize")
         XCTAssertEqual(url.path, "")
         if #available(iOS 8.0, *) {
             let queryItems = NSURLComponents(url: url, resolvingAgainstBaseURL: false)!.queryItems!
-            XCTAssertTrue(queryItems.contains(URLQueryItem(name: "client_id", value: appId)))
+            XCTAssertTrue(queryItems.contains(URLQueryItem(name: "client_id", value: parameters.appId)))
             XCTAssertTrue(queryItems.contains(URLQueryItem(name: "response_type", value: "code")))
             XCTAssertTrue(queryItems.contains(URLQueryItem(name: "redirect_uri", value: redirectUri)))
-            XCTAssertTrue(queryItems.contains(URLQueryItem(name: "state", value: state)))
-            XCTAssertTrue(queryItems.contains(URLQueryItem(name: "code_challenge", value: "test.pkce")))
+            XCTAssertTrue(queryItems.contains(URLQueryItem(name: "state", value: parameters.state)))
+            XCTAssertTrue(queryItems.contains(URLQueryItem(name: "code_challenge", value: parameters.pkce)))
             XCTAssertTrue(queryItems.contains(URLQueryItem(name: "code_challenge_method", value: "S256")))
         }
     }
     func testOpenURLUniversalLink() {
-        let url = YXLURLParser.openURLUniversalLink(withAppId: appId, state: state)!
+        let url = YXLURLParser.openURLUniversalLink(with: parameters)!
         XCTAssertEqual(url.scheme, "yandexauth")
         XCTAssertEqual(url.host, "authorize")
         XCTAssertEqual(url.path, "")
         if #available(iOS 8.0, *) {
             let queryItems = NSURLComponents(url: url, resolvingAgainstBaseURL: false)!.queryItems!
-            XCTAssertTrue(queryItems.contains(URLQueryItem(name: "client_id", value: appId)))
+            XCTAssertTrue(queryItems.contains(URLQueryItem(name: "client_id", value: parameters.appId)))
             XCTAssertTrue(queryItems.contains(URLQueryItem(name: "response_type", value: "token")))
             XCTAssertTrue(queryItems.contains(URLQueryItem(name: "redirect_uri", value: redirectUriUniversalLink)))
-            XCTAssertTrue(queryItems.contains(URLQueryItem(name: "state", value: state)))
+            XCTAssertTrue(queryItems.contains(URLQueryItem(name: "state", value: parameters.state)))
             XCTAssertFalse(queryItems.contains(URLQueryItem(name: "code_challenge_method", value: "S256")))
         }
     }

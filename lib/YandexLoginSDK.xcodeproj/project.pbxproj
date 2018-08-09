@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9B0BE94D1DDC90590042D98E /* libYandexLoginSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B1933C11DD3392400EC4026 /* libYandexLoginSDK.a */; };
+		9B0BE94D1DDC90590042D98E /* YandexLoginSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B1933C11DD3392400EC4026 /* YandexLoginSDK.framework */; };
 		9B0BE9551DDC90F80042D98E /* TestUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0BE9541DDC90F80042D98E /* TestUtilities.swift */; };
 		9B0BE9571DDC912A0042D98E /* ResponseParserFactoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0BE9561DDC912A0042D98E /* ResponseParserFactoryTest.swift */; };
 		9B0BE95A1DDC947E0042D98E /* JwtResponseParserTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0BE9591DDC947E0042D98E /* JwtResponseParserTest.swift */; };
@@ -36,10 +36,16 @@
 		9B8FCDB81E5CC0780065F78E /* YXLStatisticsDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B8FCDB71E5CC0780065F78E /* YXLStatisticsDataProvider.m */; };
 		9B95510F1DD4B4B100A84596 /* YXLError.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B95510E1DD4B4B100A84596 /* YXLError.m */; };
 		9B97FF6E1F7EC94700B97882 /* ObserversControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B97FF6D1F7EC94700B97882 /* ObserversControllerTest.swift */; };
+		9BB2C694203C53D200FB9A95 /* YXLError.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B95510D1DD4B4B100A84596 /* YXLError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9BB2C695203C53D200FB9A95 /* YXLLoginResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B72ACDB1DD9F67E00C40AB2 /* YXLLoginResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9BB2C696203C53D200FB9A95 /* YXLObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B1934121DD35D1700EC4026 /* YXLObserver.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9BB2C697203C53D200FB9A95 /* YXLSdk.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B19340E1DD35B9900EC4026 /* YXLSdk.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9BBD734D1E5769C10027F429 /* YXLSecureStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BBD734C1E5769C10027F429 /* YXLSecureStorage.m */; };
 		9BBD73521E576F950027F429 /* YXLStorageFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BBD73511E576F950027F429 /* YXLStorageFactory.m */; };
+		9BE8F9E6203748E3003178F6 /* YandexLoginSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B9551101DD4B4E000A84596 /* YandexLoginSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9BEAAF6A1DE61C2A00564305 /* URLParserTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEAAF691DE61C2A00564305 /* URLParserTest.swift */; };
 		9BF6E2E91DDB5BAD005244B0 /* YXLMainQueueAsyncExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF6E2E81DDB5BAD005244B0 /* YXLMainQueueAsyncExecutor.m */; };
+		9BFA51171FEAD0AE00A20BDB /* YXLAuthParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFA51161FEAD0AE00A20BDB /* YXLAuthParameters.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,18 +57,6 @@
 			remoteInfo = YandexLoginSDK;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		9B1933BF1DD3392400EC4026 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "include/$(PRODUCT_NAME)";
-			dstSubfolderSpec = 16;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		9B0BE9481DDC90590042D98E /* YandexLoginSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YandexLoginSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,7 +72,7 @@
 		9B14B4F31F824EC200B3F8F2 /* YXLTokenResponseParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXLTokenResponseParser.h; sourceTree = "<group>"; };
 		9B14B4F41F824EC200B3F8F2 /* YXLTokenResponseParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YXLTokenResponseParser.m; sourceTree = "<group>"; };
 		9B16055A1DDB6174006F9245 /* YXLDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXLDefinitions.h; sourceTree = "<group>"; };
-		9B1933C11DD3392400EC4026 /* libYandexLoginSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libYandexLoginSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B1933C11DD3392400EC4026 /* YandexLoginSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = YandexLoginSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B19340E1DD35B9900EC4026 /* YXLSdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXLSdk.h; sourceTree = "<group>"; };
 		9B19340F1DD35B9900EC4026 /* YXLSdk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YXLSdk.m; sourceTree = "<group>"; };
 		9B1934121DD35D1700EC4026 /* YXLObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXLObserver.h; sourceTree = "<group>"; };
@@ -129,10 +123,13 @@
 		9BBD734F1E576EA00027F429 /* YXLStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YXLStorage.h; sourceTree = "<group>"; };
 		9BBD73501E576F950027F429 /* YXLStorageFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXLStorageFactory.h; sourceTree = "<group>"; };
 		9BBD73511E576F950027F429 /* YXLStorageFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YXLStorageFactory.m; sourceTree = "<group>"; };
+		9BE8F9E4203746F6003178F6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9BEAAF691DE61C2A00564305 /* URLParserTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLParserTest.swift; sourceTree = "<group>"; };
 		9BF6E2E61DDB5BAD005244B0 /* YXLExecuting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXLExecuting.h; sourceTree = "<group>"; };
 		9BF6E2E71DDB5BAD005244B0 /* YXLMainQueueAsyncExecutor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXLMainQueueAsyncExecutor.h; sourceTree = "<group>"; };
 		9BF6E2E81DDB5BAD005244B0 /* YXLMainQueueAsyncExecutor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YXLMainQueueAsyncExecutor.m; sourceTree = "<group>"; };
+		9BFA51151FEAD0AE00A20BDB /* YXLAuthParameters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YXLAuthParameters.h; sourceTree = "<group>"; };
+		9BFA51161FEAD0AE00A20BDB /* YXLAuthParameters.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YXLAuthParameters.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,7 +137,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B0BE94D1DDC90590042D98E /* libYandexLoginSDK.a in Frameworks */,
+				9B0BE94D1DDC90590042D98E /* YandexLoginSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,6 +179,7 @@
 		9B1106DC1DDC8DFC003CAC90 /* YandexLoginSDK */ = {
 			isa = PBXGroup;
 			children = (
+				9BE8F9E3203746F6003178F6 /* Resources */,
 				9B1934091DD353E000EC4026 /* Private */,
 				9B19340A1DD353E000EC4026 /* Public */,
 				9B9551101DD4B4E000A84596 /* YandexLoginSDK.h */,
@@ -202,7 +200,7 @@
 		9B1933C21DD3392400EC4026 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9B1933C11DD3392400EC4026 /* libYandexLoginSDK.a */,
+				9B1933C11DD3392400EC4026 /* YandexLoginSDK.framework */,
 				9B0BE9481DDC90590042D98E /* YandexLoginSDKTests.xctest */,
 			);
 			name = Products;
@@ -251,9 +249,11 @@
 				9BBD734A1E5769A90027F429 /* Storage */,
 				9B82EC231DDF51F700293556 /* YXLActivationValidator.h */,
 				9B82EC241DDF51F700293556 /* YXLActivationValidator.m */,
+				9BFA51151FEAD0AE00A20BDB /* YXLAuthParameters.h */,
+				9BFA51161FEAD0AE00A20BDB /* YXLAuthParameters.m */,
+				9B16055A1DDB6174006F9245 /* YXLDefinitions.h */,
 				9B3D3CFE1F8517E00019657E /* YXLHostProvider.h */,
 				9B3D3CFF1F8517E00019657E /* YXLHostProvider.m */,
-				9B16055A1DDB6174006F9245 /* YXLDefinitions.h */,
 				9B5050811DDB58C800E7BAA1 /* YXLLoginResultModel.h */,
 				9B5050821DDB58C800E7BAA1 /* YXLLoginResultModel.m */,
 				9B5050831DDB58C800E7BAA1 /* YXLObserversController.h */,
@@ -315,6 +315,14 @@
 			path = Storage;
 			sourceTree = "<group>";
 		};
+		9BE8F9E3203746F6003178F6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9BE8F9E4203746F6003178F6 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = SOURCE_ROOT;
+		};
 		9BF6E2E51DDB5BAD005244B0 /* Executor */ = {
 			isa = PBXGroup;
 			children = (
@@ -326,6 +334,21 @@
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		9BE8F9E5203748D5003178F6 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9BE8F9E6203748E3003178F6 /* YandexLoginSDK.h in Headers */,
+				9BB2C694203C53D200FB9A95 /* YXLError.h in Headers */,
+				9BB2C695203C53D200FB9A95 /* YXLLoginResult.h in Headers */,
+				9BB2C696203C53D200FB9A95 /* YXLObserver.h in Headers */,
+				9BB2C697203C53D200FB9A95 /* YXLSdk.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		9B0BE9471DDC90590042D98E /* YandexLoginSDKTests */ = {
@@ -352,7 +375,7 @@
 			buildPhases = (
 				9B1933BD1DD3392400EC4026 /* Sources */,
 				9B1933BE1DD3392400EC4026 /* Frameworks */,
-				9B1933BF1DD3392400EC4026 /* CopyFiles */,
+				9BE8F9E5203748D5003178F6 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -360,8 +383,8 @@
 			);
 			name = YandexLoginSDK;
 			productName = YandexLoginSDK;
-			productReference = 9B1933C11DD3392400EC4026 /* libYandexLoginSDK.a */;
-			productType = "com.apple.product-type.library.static";
+			productReference = 9B1933C11DD3392400EC4026 /* YandexLoginSDK.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -447,6 +470,7 @@
 				9B8FCDB81E5CC0780065F78E /* YXLStatisticsDataProvider.m in Sources */,
 				9B5050A51DDB58C800E7BAA1 /* YXLSessionManager.m in Sources */,
 				9B5050A31DDB58C800E7BAA1 /* YXLHTTPOperation.m in Sources */,
+				9BFA51171FEAD0AE00A20BDB /* YXLAuthParameters.m in Sources */,
 				9BBD734D1E5769C10027F429 /* YXLSecureStorage.m in Sources */,
 				9BF6E2E91DDB5BAD005244B0 /* YXLMainQueueAsyncExecutor.m in Sources */,
 				9B14B4EF1F824CDD00B3F8F2 /* YXLPkce.m in Sources */,
@@ -548,8 +572,13 @@
 		9B1933CB1DD3392400EC4026 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEFINES_MODULE = YES;
+				INFOPLIST_FILE = Resources/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = ru.yandex.yandexloginsdk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -558,8 +587,13 @@
 		9B1933CC1DD3392400EC4026 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEFINES_MODULE = YES;
+				INFOPLIST_FILE = Resources/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = ru.yandex.yandexloginsdk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};

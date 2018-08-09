@@ -63,6 +63,13 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (BOOL)handleOpenURL:(NSURL *)url sourceApplication:(nullable NSString *)sourceApplication;
 
+/** Returning YES if url is related to YandexLoginSDK.
+
+ @param url The URL as passed to [UIApplicationDelegate application:openURL:sourceApplication:annotation:].
+ @return YES for YandexLoginSDK related urls.
+ */
+- (BOOL)isUrlRelatedToSdk:(NSURL *)url;
+
 /** Adds an observer.
 
  @param observer Observer to be notified with YXLObserver specific events.
@@ -85,6 +92,17 @@ NS_ASSUME_NONNULL_BEGIN
  Caches success authorization result and uses it in the next calls.
  */
 - (void)authorize;
+
+/**
+ Starts authorization process to retrieve token. Opens Yandex application or browser for access request.
+
+ @param uid expected uid or zero if there is no specified uid.
+ @param login predefined value for login input field.
+ @discussion Notifies observers if authorization is finished with success or error.
+ If YXLSdk is not activated, notifies observers with error YXLErrorCodeNotActivated.
+ Caches success authorization result and uses it in the next calls.
+ */
+- (void)authorizeWithUid:(long long)uid login:(nullable NSString *)login;
 
 /** Clears all saved data. */
 - (void)logout;
