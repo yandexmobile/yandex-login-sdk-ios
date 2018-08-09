@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                 = 'YandexLoginSDK'
-  s.version              = '2.0.1'
+  s.version              = '2.0.2'
   s.summary              = 'Yandex Login SDK'
   s.homepage             = 'https://tech.yandex.ru/'
   s.license              = { type: 'Proprietary', text: '2017 © Yandex. All rights reserved.' }
