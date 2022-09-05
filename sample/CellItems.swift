@@ -31,3 +31,9 @@ struct InputCellItem: CellItem {
     let valueBlock: () -> String?
     let action: (String?) -> Void
 }
+
+struct SwitchCellItem: CellItem {
+    let label: String?
+    let valueBlock: () -> Bool
+    let action: (Bool) -> Void
+}

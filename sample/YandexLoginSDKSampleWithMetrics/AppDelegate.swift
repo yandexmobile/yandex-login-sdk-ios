@@ -1,3 +1,5 @@
+import YandexMobileMetrica
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow? = nil
@@ -13,12 +15,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let isTesting: Bool? = Bundle.main.object(forInfoDictionaryKey: "YXLUseTestEnvironment") as! Bool?
         let clientId: String
 
-      if isTesting ?? false {
-        clientId = amTestClientId
-      } else {
-        clientId = amClientId
-      }
-      
+        if isTesting ?? false {
+          clientId = amTestClientId
+        } else {
+          clientId = amClientId
+        }
+
         let navigationController: UINavigationController
         do {
             try YXLSdk.shared.activate(withAppId: clientId)
@@ -30,6 +32,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
+        print("YMMYandexMetrica version: \(YMMYandexMetrica.libraryVersion())")
+        if let configuration = YMMYandexMetricaConfiguration(apiKey: "141aee51-f778-4951-adb8-97d811aa06e1") {
+            YMMYandexMetrica.activate(with: configuration)
+        }
         return true
     }
 

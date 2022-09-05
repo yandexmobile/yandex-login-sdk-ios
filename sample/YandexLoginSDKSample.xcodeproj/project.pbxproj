@@ -7,6 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		35377C93A143355DC5A3C446 /* libPods-YandexLoginSDKSample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2931F90405DEAACEF0A075CD /* libPods-YandexLoginSDKSample.a */; };
+		812F397628BD6643002C55C8 /* CustomArrayEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812F397528BD6643002C55C8 /* CustomArrayEditor.swift */; };
+		812F397728BD6643002C55C8 /* CustomArrayEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812F397528BD6643002C55C8 /* CustomArrayEditor.swift */; };
+		812F397828BD6643002C55C8 /* CustomArrayEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812F397528BD6643002C55C8 /* CustomArrayEditor.swift */; };
+		812F397A28BFB3F3002C55C8 /* LaunchScreenTesting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 812F397928BFB3F3002C55C8 /* LaunchScreenTesting.storyboard */; };
+		814E475326C2C920002DFE38 /* SectionControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEB616F1DD3824A00F34759 /* SectionControllers.swift */; };
+		814E475426C2C920002DFE38 /* ErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9551181DD4DCD400A84596 /* ErrorViewController.swift */; };
+		814E475526C2C920002DFE38 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1934071DD34FEF00EC4026 /* HomeViewController.swift */; };
+		814E475626C2C920002DFE38 /* Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFA511E1FEAE25E00A20BDB /* Cells.swift */; };
+		814E475726C2C920002DFE38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1933F21DD3462D00EC4026 /* AppDelegate.swift */; };
+		814E475826C2C920002DFE38 /* CellItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFA511A1FEAE1F100A20BDB /* CellItems.swift */; };
+		814E475926C2C920002DFE38 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFA51181FEAE1B400A20BDB /* BaseViewController.swift */; };
+		814E475A26C2C920002DFE38 /* CellItemFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFA511C1FEAE22B00A20BDB /* CellItemFactory.swift */; };
+		814E475F26C2C920002DFE38 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9B1934041DD34F4A00EC4026 /* InfoPlist.strings */; };
+		814E476026C2C920002DFE38 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B1934021DD34F1500EC4026 /* Images.xcassets */; };
 		9B1933F31DD3462D00EC4026 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1933F21DD3462D00EC4026 /* AppDelegate.swift */; };
 		9B1933FC1DD34CF400EC4026 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B1933FB1DD34CF400EC4026 /* LaunchScreen.storyboard */; };
 		9B1934031DD34F1500EC4026 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B1934021DD34F1500EC4026 /* Images.xcassets */; };
@@ -18,12 +33,42 @@
 		9BFA511B1FEAE1F100A20BDB /* CellItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFA511A1FEAE1F100A20BDB /* CellItems.swift */; };
 		9BFA511D1FEAE22B00A20BDB /* CellItemFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFA511C1FEAE22B00A20BDB /* CellItemFactory.swift */; };
 		9BFA511F1FEAE25E00A20BDB /* Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFA511E1FEAE25E00A20BDB /* Cells.swift */; };
-		E06F7DBC90F1621934AF55C3 /* libPods-YandexLoginSDKSample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A150072233BEDF97E62E683 /* libPods-YandexLoginSDKSample.a */; };
+		AD40BAE8314D4ABE775647BF /* libPods-YandexLoginSDKTestSample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC723AC471105A5B13CB5651 /* libPods-YandexLoginSDKTestSample.a */; };
+		B75A19772769FE17000C5572 /* SectionControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEB616F1DD3824A00F34759 /* SectionControllers.swift */; };
+		B75A19782769FE17000C5572 /* ErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9551181DD4DCD400A84596 /* ErrorViewController.swift */; };
+		B75A19792769FE17000C5572 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1934071DD34FEF00EC4026 /* HomeViewController.swift */; };
+		B75A197A2769FE17000C5572 /* Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFA511E1FEAE25E00A20BDB /* Cells.swift */; };
+		B75A197C2769FE17000C5572 /* CellItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFA511A1FEAE1F100A20BDB /* CellItems.swift */; };
+		B75A197D2769FE17000C5572 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFA51181FEAE1B400A20BDB /* BaseViewController.swift */; };
+		B75A197E2769FE17000C5572 /* CellItemFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFA511C1FEAE22B00A20BDB /* CellItemFactory.swift */; };
+		B75A19832769FE17000C5572 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B1933FB1DD34CF400EC4026 /* LaunchScreen.storyboard */; };
+		B75A19842769FE17000C5572 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9B1934041DD34F4A00EC4026 /* InfoPlist.strings */; };
+		B75A19852769FE17000C5572 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B1934021DD34F1500EC4026 /* Images.xcassets */; };
+		B7BB9B5D27CD04BD00D0AC53 /* CustomValuesEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BB9B5C27CD04BD00D0AC53 /* CustomValuesEditor.swift */; };
+		B7BB9B5E27CD2AD700D0AC53 /* CustomValuesEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BB9B5C27CD04BD00D0AC53 /* CustomValuesEditor.swift */; };
+		B7BB9B5F27CD2AD800D0AC53 /* CustomValuesEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BB9B5C27CD04BD00D0AC53 /* CustomValuesEditor.swift */; };
+		B7C2F96F276A29A700E57DBB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C2F96E276A29A700E57DBB /* AppDelegate.swift */; };
+		EB7F2C287BA25FDFF2B60FBE /* libPods-YandexLoginSDKSampleWithMetrics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F2AD30DDC6D51E01B7A42274 /* libPods-YandexLoginSDKSampleWithMetrics.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4D40AB7AE03E5CA6DDDACB51 /* Pods-YandexLoginSDKSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YandexLoginSDKSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-YandexLoginSDKSample/Pods-YandexLoginSDKSample.release.xcconfig"; sourceTree = "<group>"; };
-		6A150072233BEDF97E62E683 /* libPods-YandexLoginSDKSample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YandexLoginSDKSample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		09CA94C765C2D3D8B9AC0EEF /* Pods-YandexLoginSDKSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YandexLoginSDKSample.release.xcconfig"; path = "../Pods/Target Support Files/Pods-YandexLoginSDKSample/Pods-YandexLoginSDKSample.release.xcconfig"; sourceTree = "<group>"; };
+		0F8B67052A01BFE2CBAA9CB4 /* Pods-YandexLoginSDKSampleWithMetrics.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YandexLoginSDKSampleWithMetrics.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-YandexLoginSDKSampleWithMetrics/Pods-YandexLoginSDKSampleWithMetrics.debug.xcconfig"; sourceTree = "<group>"; };
+		0F98F6E6733CD6CC3FBAC437 /* Pods-YandexLoginSDKTestSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YandexLoginSDKTestSample.release.xcconfig"; path = "../Pods/Target Support Files/Pods-YandexLoginSDKTestSample/Pods-YandexLoginSDKTestSample.release.xcconfig"; sourceTree = "<group>"; };
+		17937096B9D65661CB85DF8D /* Pods-YandexLoginSDKPaymentsSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YandexLoginSDKPaymentsSample.release.xcconfig"; path = "../Pods/Target Support Files/Pods-YandexLoginSDKPaymentsSample/Pods-YandexLoginSDKPaymentsSample.release.xcconfig"; sourceTree = "<group>"; };
+		2931F90405DEAACEF0A075CD /* libPods-YandexLoginSDKSample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YandexLoginSDKSample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4EBCBE0CADAE77F10E3B907F /* Pods-YandexLoginSDKSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YandexLoginSDKSample.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-YandexLoginSDKSample/Pods-YandexLoginSDKSample.debug.xcconfig"; sourceTree = "<group>"; };
+		5C3DA14366B3952E297541F1 /* Pods-YandexLoginSDKSampleWithMetrics.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YandexLoginSDKSampleWithMetrics.release.xcconfig"; path = "../Pods/Target Support Files/Pods-YandexLoginSDKSampleWithMetrics/Pods-YandexLoginSDKSampleWithMetrics.release.xcconfig"; sourceTree = "<group>"; };
+		5E020B7EAB827BB778A3F7A7 /* libPods-YandexLoginSDKPaymentsTestSample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YandexLoginSDKPaymentsTestSample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		69DE2A25B41AE001F19B6C50 /* libPods-YandexLoginSDKPaymentsSample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YandexLoginSDKPaymentsSample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		812F397528BD6643002C55C8 /* CustomArrayEditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomArrayEditor.swift; sourceTree = "<group>"; };
+		812F397928BFB3F3002C55C8 /* LaunchScreenTesting.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreenTesting.storyboard; sourceTree = "<group>"; };
+		814E476426C2C920002DFE38 /* YandexLoginSDKTestSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YandexLoginSDKTestSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		814E476C26C2C9ED002DFE38 /* YandexLoginSDKTestSample-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "YandexLoginSDKTestSample-Info.plist"; sourceTree = "<group>"; };
+		814E476D26C2C9ED002DFE38 /* YxSDKTestSample.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = YxSDKTestSample.entitlements; sourceTree = "<group>"; };
+		815AE1BD25E6963551B771A2 /* Pods-YandexLoginSDKTestSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YandexLoginSDKTestSample.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-YandexLoginSDKTestSample/Pods-YandexLoginSDKTestSample.debug.xcconfig"; sourceTree = "<group>"; };
+		9232223E7B42BF889FA78446 /* Pods-YandexLoginSDKPaymentsTestSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YandexLoginSDKPaymentsTestSample.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-YandexLoginSDKPaymentsTestSample/Pods-YandexLoginSDKPaymentsTestSample.debug.xcconfig"; sourceTree = "<group>"; };
+		9467E8890AB6918AE4CFBB9E /* Pods-YandexLoginSDKPaymentsTestSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YandexLoginSDKPaymentsTestSample.release.xcconfig"; path = "../Pods/Target Support Files/Pods-YandexLoginSDKPaymentsTestSample/Pods-YandexLoginSDKPaymentsTestSample.release.xcconfig"; sourceTree = "<group>"; };
 		9B1933D61DD3396200EC4026 /* YxSDKSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YxSDKSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B1933F11DD3462D00EC4026 /* YandexLoginSDKSample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YandexLoginSDKSample-Bridging-Header.h"; sourceTree = "<group>"; };
 		9B1933F21DD3462D00EC4026 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -39,28 +84,51 @@
 		9BFA511A1FEAE1F100A20BDB /* CellItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellItems.swift; sourceTree = "<group>"; };
 		9BFA511C1FEAE22B00A20BDB /* CellItemFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellItemFactory.swift; sourceTree = "<group>"; };
 		9BFA511E1FEAE25E00A20BDB /* Cells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cells.swift; sourceTree = "<group>"; };
-		D4E6BC49A505953DB3BC7D6C /* Pods-YandexLoginSDKSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YandexLoginSDKSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YandexLoginSDKSample/Pods-YandexLoginSDKSample.debug.xcconfig"; sourceTree = "<group>"; };
+		9C821FBE3BCA76E9F77B479D /* Pods-YandexLoginSDKPaymentsSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YandexLoginSDKPaymentsSample.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-YandexLoginSDKPaymentsSample/Pods-YandexLoginSDKPaymentsSample.debug.xcconfig"; sourceTree = "<group>"; };
+		B75A19892769FE17000C5572 /* YandexLoginSDKSampleWithMetrics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YandexLoginSDKSampleWithMetrics.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7655FA0280D7F72004BC51A /* YandexLoginSDKSampleWithMetrics-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "YandexLoginSDKSampleWithMetrics-Info.plist"; sourceTree = "<group>"; };
+		B7BB9B5C27CD04BD00D0AC53 /* CustomValuesEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomValuesEditor.swift; sourceTree = "<group>"; };
+		B7C2F96E276A29A700E57DBB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EC723AC471105A5B13CB5651 /* libPods-YandexLoginSDKTestSample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YandexLoginSDKTestSample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2AD30DDC6D51E01B7A42274 /* libPods-YandexLoginSDKSampleWithMetrics.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YandexLoginSDKSampleWithMetrics.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		814E475B26C2C920002DFE38 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD40BAE8314D4ABE775647BF /* libPods-YandexLoginSDKTestSample.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9B1933D31DD3396200EC4026 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E06F7DBC90F1621934AF55C3 /* libPods-YandexLoginSDKSample.a in Frameworks */,
+				35377C93A143355DC5A3C446 /* libPods-YandexLoginSDKSample.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B75A197F2769FE17000C5572 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB7F2C287BA25FDFF2B60FBE /* libPods-YandexLoginSDKSampleWithMetrics.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		909EBA2DEEDB0CACDA163894 /* Pods */ = {
+		814E476B26C2C9ED002DFE38 /* YandexLoginSDKTestSample */ = {
 			isa = PBXGroup;
 			children = (
-				D4E6BC49A505953DB3BC7D6C /* Pods-YandexLoginSDKSample.debug.xcconfig */,
-				4D40AB7AE03E5CA6DDDACB51 /* Pods-YandexLoginSDKSample.release.xcconfig */,
+				814E476D26C2C9ED002DFE38 /* YxSDKTestSample.entitlements */,
+				814E476C26C2C9ED002DFE38 /* YandexLoginSDKTestSample-Info.plist */,
+				812F397928BFB3F3002C55C8 /* LaunchScreenTesting.storyboard */,
 			);
-			name = Pods;
+			path = YandexLoginSDKTestSample;
 			sourceTree = "<group>";
 		};
 		9B1933CD1DD3396200EC4026 = {
@@ -68,10 +136,12 @@
 			children = (
 				9B4154F91E003E80004C8D71 /* YxSDKSample.entitlements */,
 				9B1933F01DD3461D00EC4026 /* Source */,
+				B7C2F96D276A297000E57DBB /* YandexLoginSDKSampleWithMetrics */,
 				9B1933FF1DD34E5000EC4026 /* Resources */,
+				814E476B26C2C9ED002DFE38 /* YandexLoginSDKTestSample */,
 				9B1933D71DD3396200EC4026 /* Products */,
+				E5010289EFB8BD87FE2306C0 /* Pods */,
 				D135189721C2AE639DD1E06A /* Frameworks */,
-				909EBA2DEEDB0CACDA163894 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -79,6 +149,8 @@
 			isa = PBXGroup;
 			children = (
 				9B1933D61DD3396200EC4026 /* YxSDKSample.app */,
+				814E476426C2C920002DFE38 /* YandexLoginSDKTestSample.app */,
+				B75A19892769FE17000C5572 /* YandexLoginSDKSampleWithMetrics.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -91,6 +163,8 @@
 				9BFA511C1FEAE22B00A20BDB /* CellItemFactory.swift */,
 				9BFA511A1FEAE1F100A20BDB /* CellItems.swift */,
 				9BFA511E1FEAE25E00A20BDB /* Cells.swift */,
+				812F397528BD6643002C55C8 /* CustomArrayEditor.swift */,
+				B7BB9B5C27CD04BD00D0AC53 /* CustomValuesEditor.swift */,
 				9B9551181DD4DCD400A84596 /* ErrorViewController.swift */,
 				9B1934071DD34FEF00EC4026 /* HomeViewController.swift */,
 				9BEB616F1DD3824A00F34759 /* SectionControllers.swift */,
@@ -110,17 +184,65 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		B7C2F96D276A297000E57DBB /* YandexLoginSDKSampleWithMetrics */ = {
+			isa = PBXGroup;
+			children = (
+				B7655FA0280D7F72004BC51A /* YandexLoginSDKSampleWithMetrics-Info.plist */,
+				B7C2F96E276A29A700E57DBB /* AppDelegate.swift */,
+			);
+			path = YandexLoginSDKSampleWithMetrics;
+			sourceTree = "<group>";
+		};
 		D135189721C2AE639DD1E06A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6A150072233BEDF97E62E683 /* libPods-YandexLoginSDKSample.a */,
+				69DE2A25B41AE001F19B6C50 /* libPods-YandexLoginSDKPaymentsSample.a */,
+				5E020B7EAB827BB778A3F7A7 /* libPods-YandexLoginSDKPaymentsTestSample.a */,
+				EC723AC471105A5B13CB5651 /* libPods-YandexLoginSDKTestSample.a */,
+				F2AD30DDC6D51E01B7A42274 /* libPods-YandexLoginSDKSampleWithMetrics.a */,
+				2931F90405DEAACEF0A075CD /* libPods-YandexLoginSDKSample.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E5010289EFB8BD87FE2306C0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4EBCBE0CADAE77F10E3B907F /* Pods-YandexLoginSDKSample.debug.xcconfig */,
+				09CA94C765C2D3D8B9AC0EEF /* Pods-YandexLoginSDKSample.release.xcconfig */,
+				9C821FBE3BCA76E9F77B479D /* Pods-YandexLoginSDKPaymentsSample.debug.xcconfig */,
+				17937096B9D65661CB85DF8D /* Pods-YandexLoginSDKPaymentsSample.release.xcconfig */,
+				9232223E7B42BF889FA78446 /* Pods-YandexLoginSDKPaymentsTestSample.debug.xcconfig */,
+				9467E8890AB6918AE4CFBB9E /* Pods-YandexLoginSDKPaymentsTestSample.release.xcconfig */,
+				815AE1BD25E6963551B771A2 /* Pods-YandexLoginSDKTestSample.debug.xcconfig */,
+				0F98F6E6733CD6CC3FBAC437 /* Pods-YandexLoginSDKTestSample.release.xcconfig */,
+				0F8B67052A01BFE2CBAA9CB4 /* Pods-YandexLoginSDKSampleWithMetrics.debug.xcconfig */,
+				5C3DA14366B3952E297541F1 /* Pods-YandexLoginSDKSampleWithMetrics.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		814E475026C2C920002DFE38 /* YandexLoginSDKTestSample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 814E476126C2C920002DFE38 /* Build configuration list for PBXNativeTarget "YandexLoginSDKTestSample" */;
+			buildPhases = (
+				814E475126C2C920002DFE38 /* [CP] Check Pods Manifest.lock */,
+				814E475226C2C920002DFE38 /* Sources */,
+				814E475B26C2C920002DFE38 /* Frameworks */,
+				814E475D26C2C920002DFE38 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = YandexLoginSDKTestSample;
+			productName = YandexLoginSDKSample;
+			productReference = 814E476426C2C920002DFE38 /* YandexLoginSDKTestSample.app */;
+			productType = "com.apple.product-type.application";
+		};
 		9B1933D51DD3396200EC4026 /* YandexLoginSDKSample */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9B1933E81DD3396200EC4026 /* Build configuration list for PBXNativeTarget "YandexLoginSDKSample" */;
@@ -139,25 +261,51 @@
 			productReference = 9B1933D61DD3396200EC4026 /* YxSDKSample.app */;
 			productType = "com.apple.product-type.application";
 		};
+		B75A19742769FE17000C5572 /* YandexLoginSDKSampleWithMetrics */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B75A19862769FE17000C5572 /* Build configuration list for PBXNativeTarget "YandexLoginSDKSampleWithMetrics" */;
+			buildPhases = (
+				B75A19752769FE17000C5572 /* [CP] Check Pods Manifest.lock */,
+				B75A19762769FE17000C5572 /* Sources */,
+				B75A197F2769FE17000C5572 /* Frameworks */,
+				B75A19822769FE17000C5572 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = YandexLoginSDKSampleWithMetrics;
+			productName = YandexLoginSDKSample;
+			productReference = B75A19892769FE17000C5572 /* YandexLoginSDKSampleWithMetrics.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		9B1933CE1DD3396200EC4026 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0730;
+				LastSwiftUpdateCheck = 1130;
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = Yandex;
 				TargetAttributes = {
+					814E475026C2C920002DFE38 = {
+						DevelopmentTeam = EK7Z26L6D4;
+					};
 					9B1933D51DD3396200EC4026 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = EK7Z26L6D4;
 						LastSwiftMigration = 0800;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.SafariKeychain = {
 								enabled = 1;
 							};
 						};
+					};
+					B75A19742769FE17000C5572 = {
+						DevelopmentTeam = EK7Z26L6D4;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -166,6 +314,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -175,11 +324,23 @@
 			projectRoot = "";
 			targets = (
 				9B1933D51DD3396200EC4026 /* YandexLoginSDKSample */,
+				814E475026C2C920002DFE38 /* YandexLoginSDKTestSample */,
+				B75A19742769FE17000C5572 /* YandexLoginSDKSampleWithMetrics */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		814E475D26C2C920002DFE38 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				814E475F26C2C920002DFE38 /* InfoPlist.strings in Resources */,
+				812F397A28BFB3F3002C55C8 /* LaunchScreenTesting.storyboard in Resources */,
+				814E476026C2C920002DFE38 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9B1933D41DD3396200EC4026 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -187,6 +348,16 @@
 				9B1933FC1DD34CF400EC4026 /* LaunchScreen.storyboard in Resources */,
 				9B1934061DD34F4A00EC4026 /* InfoPlist.strings in Resources */,
 				9B1934031DD34F1500EC4026 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B75A19822769FE17000C5572 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B75A19832769FE17000C5572 /* LaunchScreen.storyboard in Resources */,
+				B75A19842769FE17000C5572 /* InfoPlist.strings in Resources */,
+				B75A19852769FE17000C5572 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,9 +382,62 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		814E475126C2C920002DFE38 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-YandexLoginSDKTestSample-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B75A19752769FE17000C5572 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-YandexLoginSDKSampleWithMetrics-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		814E475226C2C920002DFE38 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				814E475326C2C920002DFE38 /* SectionControllers.swift in Sources */,
+				814E475426C2C920002DFE38 /* ErrorViewController.swift in Sources */,
+				814E475526C2C920002DFE38 /* HomeViewController.swift in Sources */,
+				814E475626C2C920002DFE38 /* Cells.swift in Sources */,
+				814E475726C2C920002DFE38 /* AppDelegate.swift in Sources */,
+				814E475826C2C920002DFE38 /* CellItems.swift in Sources */,
+				B7BB9B5E27CD2AD700D0AC53 /* CustomValuesEditor.swift in Sources */,
+				814E475926C2C920002DFE38 /* BaseViewController.swift in Sources */,
+				814E475A26C2C920002DFE38 /* CellItemFactory.swift in Sources */,
+				812F397728BD6643002C55C8 /* CustomArrayEditor.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9B1933D21DD3396200EC4026 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -224,8 +448,27 @@
 				9BFA511F1FEAE25E00A20BDB /* Cells.swift in Sources */,
 				9B1933F31DD3462D00EC4026 /* AppDelegate.swift in Sources */,
 				9BFA511B1FEAE1F100A20BDB /* CellItems.swift in Sources */,
+				B7BB9B5D27CD04BD00D0AC53 /* CustomValuesEditor.swift in Sources */,
 				9BFA51191FEAE1B400A20BDB /* BaseViewController.swift in Sources */,
 				9BFA511D1FEAE22B00A20BDB /* CellItemFactory.swift in Sources */,
+				812F397628BD6643002C55C8 /* CustomArrayEditor.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B75A19762769FE17000C5572 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B75A19772769FE17000C5572 /* SectionControllers.swift in Sources */,
+				B75A19782769FE17000C5572 /* ErrorViewController.swift in Sources */,
+				B75A19792769FE17000C5572 /* HomeViewController.swift in Sources */,
+				B7C2F96F276A29A700E57DBB /* AppDelegate.swift in Sources */,
+				B75A197A2769FE17000C5572 /* Cells.swift in Sources */,
+				B75A197C2769FE17000C5572 /* CellItems.swift in Sources */,
+				B7BB9B5F27CD2AD800D0AC53 /* CustomValuesEditor.swift in Sources */,
+				B75A197D2769FE17000C5572 /* BaseViewController.swift in Sources */,
+				B75A197E2769FE17000C5572 /* CellItemFactory.swift in Sources */,
+				812F397828BD6643002C55C8 /* CustomArrayEditor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,6 +486,49 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		814E476226C2C920002DFE38 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 815AE1BD25E6963551B771A2 /* Pods-YandexLoginSDKTestSample.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = YandexLoginSDKTestSample/YxSDKTestSample.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Yandex LLC";
+				DEVELOPMENT_TEAM = EK7Z26L6D4;
+				INFOPLIST_FILE = "YandexLoginSDKTestSample-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 203;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.yandex.loginsdk.sample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Login SDK sample inhouse";
+				SWIFT_OBJC_BRIDGING_HEADER = "YandexLoginSDKSample-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		814E476326C2C920002DFE38 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0F98F6E6733CD6CC3FBAC437 /* Pods-YandexLoginSDKTestSample.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = YandexLoginSDKTestSample/YxSDKTestSample.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Yandex LLC";
+				DEVELOPMENT_TEAM = EK7Z26L6D4;
+				INFOPLIST_FILE = "YandexLoginSDKTestSample-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 203;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.yandex.loginsdk.sample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Login SDK sample inhouse";
+				SWIFT_OBJC_BRIDGING_HEADER = "YandexLoginSDKSample-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
 		9B1933E61DD3396200EC4026 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -282,7 +568,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -324,7 +610,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -335,44 +621,106 @@
 		};
 		9B1933E91DD3396200EC4026 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D4E6BC49A505953DB3BC7D6C /* Pods-YandexLoginSDKSample.debug.xcconfig */;
+			baseConfigurationReference = 4EBCBE0CADAE77F10E3B907F /* Pods-YandexLoginSDKSample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = YxSDKSample.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "YandexLoginSDKSample-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 210;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.yandex.loginsdk.sample;
 				PRODUCT_NAME = YxSDKSample;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "YandexLoginSDKSample-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
 		9B1933EA1DD3396200EC4026 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4D40AB7AE03E5CA6DDDACB51 /* Pods-YandexLoginSDKSample.release.xcconfig */;
+			baseConfigurationReference = 09CA94C765C2D3D8B9AC0EEF /* Pods-YandexLoginSDKSample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = YxSDKSample.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "YandexLoginSDKSample-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 210;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.yandex.loginsdk.sample;
 				PRODUCT_NAME = YxSDKSample;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "YandexLoginSDKSample-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+		B75A19872769FE17000C5572 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0F8B67052A01BFE2CBAA9CB4 /* Pods-YandexLoginSDKSampleWithMetrics.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = YxSDKSample.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = "YandexLoginSDKSampleWithMetrics/YandexLoginSDKSampleWithMetrics-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 203;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.yandex.loginsdk.sample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "YandexLoginSDKSample-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		B75A19882769FE17000C5572 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5C3DA14366B3952E297541F1 /* Pods-YandexLoginSDKSampleWithMetrics.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = YxSDKSample.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = "YandexLoginSDKSampleWithMetrics/YandexLoginSDKSampleWithMetrics-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 203;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.yandex.loginsdk.sample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "YandexLoginSDKSample-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		814E476126C2C920002DFE38 /* Build configuration list for PBXNativeTarget "YandexLoginSDKTestSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				814E476226C2C920002DFE38 /* Debug */,
+				814E476326C2C920002DFE38 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		9B1933D11DD3396200EC4026 /* Build configuration list for PBXProject "YandexLoginSDKSample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -387,6 +735,15 @@
 			buildConfigurations = (
 				9B1933E91DD3396200EC4026 /* Debug */,
 				9B1933EA1DD3396200EC4026 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B75A19862769FE17000C5572 /* Build configuration list for PBXNativeTarget "YandexLoginSDKSampleWithMetrics" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B75A19872769FE17000C5572 /* Debug */,
+				B75A19882769FE17000C5572 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

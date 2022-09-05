@@ -27,8 +27,8 @@ final class InputCell: UITableViewCell, UITextFieldDelegate {
             input.autocapitalizationType = .none
             input.autocorrectionType = .no
             input.delegate = self
-            addSubview(label)
-            addSubview(input)
+            contentView.addSubview(label)
+            contentView.addSubview(input)
             selectionStyle = .none
             input.addTarget(self, action: #selector(onChanged), for: .editingChanged)
         }
@@ -51,5 +51,26 @@ final class InputCell: UITableViewCell, UITextFieldDelegate {
 
     @objc func onChanged() {
         action?(input.text)
+    }
+}
+
+final class SwitchCell: UITableViewCell {
+    private var action: ((Bool) -> Void)?
+
+    func configure(withText text: String?, value: Bool, action: @escaping (Bool) -> Void) {
+        textLabel!.text = text
+        self.action = action
+        accessoryView = {
+            let switchView = UISwitch()
+            switchView.isOn = value
+            switchView.addTarget(self, action: #selector(onSwitch), for: .valueChanged)
+            return switchView
+        }()
+        selectionStyle = .none
+        accessoryView?.accessibilityIdentifier = "switcher"
+    }
+
+    @objc func onSwitch(_ switchView: UISwitch) {
+        action?(switchView.isOn)
     }
 }
