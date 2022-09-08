@@ -33,7 +33,7 @@
     if (SecItemCopyMatching((__bridge CFDictionaryRef)selectQuery, &dataTypeRef) == errSecSuccess) {
         NSData *data = CFBridgingRelease(dataTypeRef);
         @try {
-            storedObject = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+            storedObject = [NSKeyedUnarchiver unarchivedObjectOfClass:NSDictionary.class fromData:data error:NULL];
         }
         @catch (NSException *_) {
         }
@@ -46,7 +46,7 @@
     SecItemDelete((__bridge CFDictionaryRef)self.keychainQuery);
     if (storedObject != nil) {
         NSMutableDictionary *query = [self.keychainQuery mutableCopy];
-        query[(id)kSecValueData] = [NSKeyedArchiver archivedDataWithRootObject:storedObject];
+        query[(id)kSecValueData] = [NSKeyedArchiver archivedDataWithRootObject:storedObject requiringSecureCoding:NO error:NULL];
         SecItemAdd((__bridge CFDictionaryRef)query, NULL);
     }
 }
