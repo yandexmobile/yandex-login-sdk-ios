@@ -1,0 +1,472 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8113B76129DD96D700811DCA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8113B76029DD96D700811DCA /* Assets.xcassets */; };
+		8113B76429DD96D700811DCA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8113B76229DD96D700811DCA /* LaunchScreen.storyboard */; };
+		8113B77929DD982900811DCA /* CustomArrayEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8113B76E29DD982900811DCA /* CustomArrayEditor.swift */; };
+		8113B77A29DD982900811DCA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8113B76F29DD982900811DCA /* ViewController.swift */; };
+		8113B77B29DD982900811DCA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8113B77029DD982900811DCA /* AppDelegate.swift */; };
+		8113B77C29DD982900811DCA /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8113B77129DD982900811DCA /* BaseViewController.swift */; };
+		8113B77D29DD982900811DCA /* Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8113B77229DD982900811DCA /* Cells.swift */; };
+		8113B77E29DD982900811DCA /* ErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8113B77329DD982900811DCA /* ErrorViewController.swift */; };
+		8113B77F29DD982900811DCA /* CustomValuesEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8113B77429DD982900811DCA /* CustomValuesEditor.swift */; };
+		8113B78029DD982900811DCA /* CellItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8113B77529DD982900811DCA /* CellItems.swift */; };
+		8113B78129DD982900811DCA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8113B77629DD982900811DCA /* HomeViewController.swift */; };
+		8113B78229DD982900811DCA /* CellItemFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8113B77729DD982900811DCA /* CellItemFactory.swift */; };
+		8113B78329DD982900811DCA /* SectionControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8113B77829DD982900811DCA /* SectionControllers.swift */; };
+		8113B78D29DDC90B00811DCA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8113B78C29DDC90B00811DCA /* UIKit.framework */; };
+		8113B78F29DDC91300811DCA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8113B78E29DDC91300811DCA /* Foundation.framework */; };
+		812917AA29E9A3CA00A55882 /* YandexLoginSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 812917A929E9A3CA00A55882 /* YandexLoginSDK */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		8113B75429DD96D600811DCA /* YxSDKSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YxSDKSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8113B76029DD96D700811DCA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8113B76329DD96D700811DCA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8113B76529DD96D700811DCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8113B76D29DD982800811DCA /* YandexLoginSDKSampleSPM-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YandexLoginSDKSampleSPM-Bridging-Header.h"; sourceTree = "<group>"; };
+		8113B76E29DD982900811DCA /* CustomArrayEditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomArrayEditor.swift; path = YandexLoginSDKSampleSPM/CustomArrayEditor.swift; sourceTree = SOURCE_ROOT; };
+		8113B76F29DD982900811DCA /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = YandexLoginSDKSampleSPM/ViewController.swift; sourceTree = SOURCE_ROOT; };
+		8113B77029DD982900811DCA /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = YandexLoginSDKSampleSPM/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
+		8113B77129DD982900811DCA /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = YandexLoginSDKSampleSPM/BaseViewController.swift; sourceTree = SOURCE_ROOT; };
+		8113B77229DD982900811DCA /* Cells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Cells.swift; path = YandexLoginSDKSampleSPM/Cells.swift; sourceTree = SOURCE_ROOT; };
+		8113B77329DD982900811DCA /* ErrorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ErrorViewController.swift; path = YandexLoginSDKSampleSPM/ErrorViewController.swift; sourceTree = SOURCE_ROOT; };
+		8113B77429DD982900811DCA /* CustomValuesEditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomValuesEditor.swift; path = YandexLoginSDKSampleSPM/CustomValuesEditor.swift; sourceTree = SOURCE_ROOT; };
+		8113B77529DD982900811DCA /* CellItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CellItems.swift; path = YandexLoginSDKSampleSPM/CellItems.swift; sourceTree = SOURCE_ROOT; };
+		8113B77629DD982900811DCA /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = YandexLoginSDKSampleSPM/HomeViewController.swift; sourceTree = SOURCE_ROOT; };
+		8113B77729DD982900811DCA /* CellItemFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CellItemFactory.swift; path = YandexLoginSDKSampleSPM/CellItemFactory.swift; sourceTree = SOURCE_ROOT; };
+		8113B77829DD982900811DCA /* SectionControllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SectionControllers.swift; path = YandexLoginSDKSampleSPM/SectionControllers.swift; sourceTree = SOURCE_ROOT; };
+		8113B78429DD988800811DCA /* YxSDKSample.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = YxSDKSample.entitlements; sourceTree = "<group>"; };
+		8113B78C29DDC90B00811DCA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		8113B78E29DDC91300811DCA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8113B75129DD96D600811DCA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8113B78F29DDC91300811DCA /* Foundation.framework in Frameworks */,
+				812917AA29E9A3CA00A55882 /* YandexLoginSDK in Frameworks */,
+				8113B78D29DDC90B00811DCA /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8113B74B29DD96D600811DCA = {
+			isa = PBXGroup;
+			children = (
+				8113B75629DD96D600811DCA /* YandexLoginSDKSampleSPM */,
+				8113B75529DD96D600811DCA /* Products */,
+				8113B78B29DDC90B00811DCA /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		8113B75529DD96D600811DCA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8113B75429DD96D600811DCA /* YxSDKSample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8113B75629DD96D600811DCA /* YandexLoginSDKSampleSPM */ = {
+			isa = PBXGroup;
+			children = (
+				8113B78429DD988800811DCA /* YxSDKSample.entitlements */,
+				8113B76B29DD973000811DCA /* Source */,
+				8113B76C29DD975100811DCA /* Resources */,
+			);
+			path = YandexLoginSDKSampleSPM;
+			sourceTree = "<group>";
+		};
+		8113B76B29DD973000811DCA /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				8113B77029DD982900811DCA /* AppDelegate.swift */,
+				8113B77129DD982900811DCA /* BaseViewController.swift */,
+				8113B77729DD982900811DCA /* CellItemFactory.swift */,
+				8113B77529DD982900811DCA /* CellItems.swift */,
+				8113B77229DD982900811DCA /* Cells.swift */,
+				8113B76E29DD982900811DCA /* CustomArrayEditor.swift */,
+				8113B77429DD982900811DCA /* CustomValuesEditor.swift */,
+				8113B77329DD982900811DCA /* ErrorViewController.swift */,
+				8113B77629DD982900811DCA /* HomeViewController.swift */,
+				8113B77829DD982900811DCA /* SectionControllers.swift */,
+				8113B76F29DD982900811DCA /* ViewController.swift */,
+				8113B76D29DD982800811DCA /* YandexLoginSDKSampleSPM-Bridging-Header.h */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		8113B76C29DD975100811DCA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8113B76029DD96D700811DCA /* Assets.xcassets */,
+				8113B76229DD96D700811DCA /* LaunchScreen.storyboard */,
+				8113B76529DD96D700811DCA /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		8113B78B29DDC90B00811DCA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8113B78E29DDC91300811DCA /* Foundation.framework */,
+				8113B78C29DDC90B00811DCA /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8113B75329DD96D600811DCA /* YandexLoginSDKSampleSPM */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8113B76829DD96D700811DCA /* Build configuration list for PBXNativeTarget "YandexLoginSDKSampleSPM" */;
+			buildPhases = (
+				8113B75029DD96D600811DCA /* Sources */,
+				8113B75129DD96D600811DCA /* Frameworks */,
+				8113B75229DD96D600811DCA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = YandexLoginSDKSampleSPM;
+			packageProductDependencies = (
+				812917A929E9A3CA00A55882 /* YandexLoginSDK */,
+			);
+			productName = YandexLoginSDKSampleSPM;
+			productReference = 8113B75429DD96D600811DCA /* YxSDKSample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8113B74C29DD96D600811DCA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					8113B75329DD96D600811DCA = {
+						CreatedOnToolsVersion = 14.2;
+						LastSwiftMigration = 1420;
+					};
+				};
+			};
+			buildConfigurationList = 8113B74F29DD96D600811DCA /* Build configuration list for PBXProject "YandexLoginSDKSampleSPM" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8113B74B29DD96D600811DCA;
+			packageReferences = (
+				812917A829E9A3CA00A55882 /* XCRemoteSwiftPackageReference "yandex-login-sdk-ios" */,
+			);
+			productRefGroup = 8113B75529DD96D600811DCA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8113B75329DD96D600811DCA /* YandexLoginSDKSampleSPM */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8113B75229DD96D600811DCA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8113B76429DD96D700811DCA /* LaunchScreen.storyboard in Resources */,
+				8113B76129DD96D700811DCA /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8113B75029DD96D600811DCA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8113B77B29DD982900811DCA /* AppDelegate.swift in Sources */,
+				8113B77E29DD982900811DCA /* ErrorViewController.swift in Sources */,
+				8113B77F29DD982900811DCA /* CustomValuesEditor.swift in Sources */,
+				8113B78329DD982900811DCA /* SectionControllers.swift in Sources */,
+				8113B77C29DD982900811DCA /* BaseViewController.swift in Sources */,
+				8113B78029DD982900811DCA /* CellItems.swift in Sources */,
+				8113B78129DD982900811DCA /* HomeViewController.swift in Sources */,
+				8113B77A29DD982900811DCA /* ViewController.swift in Sources */,
+				8113B78229DD982900811DCA /* CellItemFactory.swift in Sources */,
+				8113B77929DD982900811DCA /* CustomArrayEditor.swift in Sources */,
+				8113B77D29DD982900811DCA /* Cells.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		8113B76229DD96D700811DCA /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8113B76329DD96D700811DCA /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8113B76629DD96D700811DCA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		8113B76729DD96D700811DCA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8113B76929DD96D700811DCA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8NA98GZ448;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = YandexLoginSDKSampleSPM/Resources/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"UIKit\"",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ru.yandex.loginsdk.sample.debug;
+				PRODUCT_NAME = YxSDKSample;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "YandexLoginSDKSampleSPM/Source/YandexLoginSDKSampleSPM-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8113B76A29DD96D700811DCA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8NA98GZ448;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = YandexLoginSDKSampleSPM/Resources/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"UIKit\"",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ru.yandex.loginsdk.sample.debug;
+				PRODUCT_NAME = YxSDKSample;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "YandexLoginSDKSampleSPM/Source/YandexLoginSDKSampleSPM-Bridging-Header.h";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8113B74F29DD96D600811DCA /* Build configuration list for PBXProject "YandexLoginSDKSampleSPM" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8113B76629DD96D700811DCA /* Debug */,
+				8113B76729DD96D700811DCA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8113B76829DD96D700811DCA /* Build configuration list for PBXNativeTarget "YandexLoginSDKSampleSPM" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8113B76929DD96D700811DCA /* Debug */,
+				8113B76A29DD96D700811DCA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		812917A829E9A3CA00A55882 /* XCRemoteSwiftPackageReference "yandex-login-sdk-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/yandexmobile/yandex-login-sdk-ios";
+			requirement = {
+				kind = revision;
+				revision = d926fff90a8331767a43ee1d0792b30550431a6d;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		812917A929E9A3CA00A55882 /* YandexLoginSDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 812917A829E9A3CA00A55882 /* XCRemoteSwiftPackageReference "yandex-login-sdk-ios" */;
+			productName = YandexLoginSDK;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 8113B74C29DD96D600811DCA /* Project object */;
+}
