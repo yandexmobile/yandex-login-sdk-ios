@@ -1,2 +1,3 @@
 The following authors have created the source code of "Yandex Login SDK iOS" published and distributed by YANDEX LLC as the owner:
 Maria Kachalova <mkachalova@yandex-team.ru>
+Ivan Alekseev <alivig1@yandex-team.ru>

@@ -58,6 +58,9 @@ final class HomeViewController: BaseViewController, YXLObserver {
             SwitchCellItem(label: "Force fullscreen",
                            valueBlock: { YXLSdk.shared.forceFullscreenDialogs },
                            action: { value in YXLSdk.shared.forceFullscreenDialogs = value }),
+            SwitchCellItem(label: "Use app for authorization",
+                           valueBlock: { UserDefaults.standard.bool(forKey: "blockBrowser")},
+                           action: { value in UserDefaults.standard.set(value, forKey: "blockBrowser") }),
             ActionCellItem(text: "Scopes", type: .button) { [unowned self] in
                 self.showScopesEditor()
             },

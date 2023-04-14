@@ -216,11 +216,15 @@ API_AVAILABLE(ios(13.0))
                                                                       scopes:scopesString
                                                               optionalScopes:optionalScopesString];
 
+  if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"blockBrowser"] boolValue]) {
+    [self tryOpenUrlWithParameters:parameters];
+  } else {
     if (parentController != nil) {
         [self tryModernOpenURLWithParameters:parameters parentController:parentController];
     } else {
         [self openBrowserUrlWithParameters:parameters];
     }
+  }
 }
 
 - (void)tryModernOpenURLWithParameters:(YXLAuthParameters *)parameters parentController:(UIViewController *)parentController
@@ -291,18 +295,13 @@ API_AVAILABLE(ios(13.0))
 - (void)authorizeWithOpenURL:(NSURL *)url isUniversal:(BOOL)isUniversal completionHandler:(void (^)(BOOL success))completion
 {
     UIApplication *application = UIApplication.sharedApplication;
-#ifdef __IPHONE_11_0
-    if (@available(iOS 10_0, *)) {
-#else
     if ([application respondsToSelector:@selector(openURL:options:completionHandler:)]) {
-#endif
         NSDictionary *options = @{ UIApplicationOpenURLOptionUniversalLinksOnly: @(isUniversal) };
         [application openURL:url options:options completionHandler:completion];
     }
     else {
-        BOOL result = [application openURL:url];
         if (completion != NULL) {
-            completion(result);
+            completion(NO);
         }
     }
 }
