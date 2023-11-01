@@ -5,8 +5,6 @@
 	<key>com.apple.developer.associated-domains</key>
 	<array>
 		<string>applinks:yx57a8133c69d947388a67164dfdbc46d3.oauth.yandex.ru</string>
-		<string>applinks:yx3e20d6a92fa34a73a4b65838ef047c54.oauth.yandex.ru</string>
-		<string>applinks:yxe59824a58e2f440aa358f2b3eb13e364.oauth.yandex.ru</string>
 	</array>
 </dict>
 </plist>
