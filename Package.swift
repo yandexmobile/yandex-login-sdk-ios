@@ -1,4 +1,6 @@
-// swift-tools-version:5.7
+// swift-tools-version: 5.7
+// The swift-tools-version declares the minimum version of Swift required to build this package.
+
 import PackageDescription
 
 let package = Package(
@@ -7,37 +9,15 @@ let package = Package(
     products: [
         .library(
             name: "YandexLoginSDK",
-            type: .static,
-            targets: ["YandexLoginSDK"]
-        ),
+            targets: ["YandexLoginSDK"]),
     ],
     targets: [
         .target(
             name: "YandexLoginSDK",
-            path: "lib",
-            sources: ["Classes"],
-            publicHeadersPath: "Classes/Public",
-            cSettings: [
-                .unsafeFlags([
-                    "-Werror",
-                    "-Wall",
-                    "-Wsign-compare",
-                    "-Wdocumentation-unknown-command",
-                    "-Wdocumentation",
-                    "-Wnewline-eof",
-                    "-Wobjc-interface-ivars",
-                    "-Woverriding-method-mismatch",
-                    "-Wsuper-class-method-mismatch",
-                ]),
-                .headerSearchPath("Classes/Private"),
-                .headerSearchPath("Classes/Private/Core"),
-                .headerSearchPath("Classes/Private/Core/Executor"),
-                .headerSearchPath("Classes/Private/Core/Storage"),
-                .headerSearchPath("Classes/Private/Networking"),
-                .headerSearchPath("Classes/Private/Networking/RequestParams"),
-                .headerSearchPath("Classes/Private/Networking/ResponseParser")
-            ],
-            linkerSettings: [.unsafeFlags(["-ObjC"])]
-        )
-    ]
+            dependencies: []),
+        .testTarget(
+            name: "YandexLoginSDKTests",
+            dependencies: ["YandexLoginSDK"]),
+    ],
+    swiftLanguageVersions: [.v5]
 )

@@ -1,1 +1,0 @@
-#import <YandexLoginSDK/YandexLoginSDK.h>
