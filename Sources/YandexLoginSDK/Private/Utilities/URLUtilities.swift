@@ -33,7 +33,7 @@ enum URLUtilities {
     ) throws -> URL {
         var components = URLComponents()
         components.scheme = primacy.scheme
-        components.host = "/authorize"
+        components.host = "authorize"
         
         guard let path = components.url?.absoluteString else {
             throw URLUtilitiesError.couldntCreateURLFromURLComponents(urlComponents: components)
