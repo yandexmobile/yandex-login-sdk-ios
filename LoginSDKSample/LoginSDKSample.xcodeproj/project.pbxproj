@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		813C23C22AF2AFCB00546A96 /* YandexLoginSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 813C23C12AF2AFCB00546A96 /* YandexLoginSDK */; };
+		8197B37E2BDA70550076B810 /* YandexLoginSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 8197B37D2BDA70550076B810 /* YandexLoginSDK */; };
 		81C20B0229AD09B6003A3821 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C20B0129AD09B6003A3821 /* AppDelegate.swift */; };
 		81C20B0429AD09B6003A3821 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C20B0329AD09B6003A3821 /* SceneDelegate.swift */; };
 		81C20B0629AD09B6003A3821 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C20B0529AD09B6003A3821 /* ViewController.swift */; };
@@ -38,7 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				813C23C22AF2AFCB00546A96 /* YandexLoginSDK in Frameworks */,
+				8197B37E2BDA70550076B810 /* YandexLoginSDK in Frameworks */,
 				BC0698DD29C8BED200BFDDD1 /* YandexLoginSDK in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -105,7 +105,7 @@
 			name = LoginSDKSample;
 			packageProductDependencies = (
 				BC0698DC29C8BED200BFDDD1 /* YandexLoginSDK */,
-				813C23C12AF2AFCB00546A96 /* YandexLoginSDK */,
+				8197B37D2BDA70550076B810 /* YandexLoginSDK */,
 			);
 			productName = LoginSDKSample;
 			productReference = 81C20AFE29AD09B6003A3821 /* LoginSDKSample.app */;
@@ -136,7 +136,7 @@
 			);
 			mainGroup = 81C20AF529AD09B6003A3821;
 			packageReferences = (
-				813C23C02AF2AFCB00546A96 /* XCRemoteSwiftPackageReference "yandex-login-sdk-ios" */,
+				8197B37C2BDA70550076B810 /* XCRemoteSwiftPackageReference "yandex-login-sdk-ios" */,
 			);
 			productRefGroup = 81C20AFF29AD09B6003A3821 /* Products */;
 			projectDirPath = "";
@@ -405,20 +405,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		813C23C02AF2AFCB00546A96 /* XCRemoteSwiftPackageReference "yandex-login-sdk-ios" */ = {
+		8197B37C2BDA70550076B810 /* XCRemoteSwiftPackageReference "yandex-login-sdk-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/yandexmobile/yandex-login-sdk-ios";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		813C23C12AF2AFCB00546A96 /* YandexLoginSDK */ = {
+		8197B37D2BDA70550076B810 /* YandexLoginSDK */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 813C23C02AF2AFCB00546A96 /* XCRemoteSwiftPackageReference "yandex-login-sdk-ios" */;
+			package = 8197B37C2BDA70550076B810 /* XCRemoteSwiftPackageReference "yandex-login-sdk-ios" */;
 			productName = YandexLoginSDK;
 		};
 		BC0698DC29C8BED200BFDDD1 /* YandexLoginSDK */ = {
