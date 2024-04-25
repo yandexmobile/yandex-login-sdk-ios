@@ -1,10 +1,10 @@
 
 Pod::Spec.new do |spec|
   spec.name           = "YandexLoginSDK"
-  spec.version        = "3.0.1"
+  spec.version        = "3.0.2"
   spec.summary        = "A library that helps third-party applications authorize in Yandex Services."
   spec.homepage       = "https://yandex.ru/dev/id/doc/"
-  spec.license        = { type: 'Proprietary', text: '2023 © Yandex. All rights reserved.' }
+  spec.license        = { type: 'Proprietary', text: '2024 © Yandex. All rights reserved.' }
   spec.author         = { "Yandex LLC" => "ios-dev@yandex-team.ru" }
   spec.platform       = :ios, "12.0"
   spec.swift_version  = "5.0"

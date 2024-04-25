@@ -12,7 +12,7 @@ public final class YandexLoginSDK: NSObject {
     }
     
     public static let shared = YandexLoginSDK()
-    public static let version: String = "3.0.0"
+    public static let version: String = "3.0.2"
     
     private var clientID: String?
     private var observersController = ObserversController()
