@@ -20,7 +20,8 @@ public final class YandexLoginSDK: NSObject {
     private var presentationController: UIViewController?
     private var safariViewController: SFSafariViewController?
     private var webAuthenticationSession: ASWebAuthenticationSession?
-    
+    private var latestState: String?
+
     static var isInTestEnvironment: Bool {
         Bundle.main.infoDictionary?["YandexLoginSDKUseTestEnvironment"] as? Bool ?? false
     }
@@ -121,6 +122,7 @@ public final class YandexLoginSDK: NSObject {
         }
         
         let state = try StatesManager.generateNewState()
+        latestState = state
         let pkce = try PKCE()
         
         try SharedStorages.codeVerifierStorage.save(object: pkce.codeVerifierAsDictionary)
@@ -354,7 +356,10 @@ public final class YandexLoginSDK: NSObject {
     private func failureHandler(with error: Error) -> Void {
         self.observersController.notifyLoginDidFinish(with: .failure(error))
     }
-    
+
+    func getLatestState() -> String? {
+        latestState
+    }
 }
 
 // MARK: Safari view controller delegate
