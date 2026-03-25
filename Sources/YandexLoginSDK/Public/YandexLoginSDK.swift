@@ -12,7 +12,7 @@ public final class YandexLoginSDK: NSObject {
     }
     
     public static let shared = YandexLoginSDK()
-    public static let version: String = "3.0.2"
+    public static let version: String = "3.1.0"
     
     private var clientID: String?
     private var observersController = ObserversController()
@@ -21,6 +21,7 @@ public final class YandexLoginSDK: NSObject {
     private var safariViewController: SFSafariViewController?
     private var webAuthenticationSession: ASWebAuthenticationSession?
     private var latestState: String?
+    private var latestClientID: String?
 
     static var isInTestEnvironment: Bool {
         Bundle.main.infoDictionary?["YandexLoginSDKUseTestEnvironment"] as? Bool ?? false
@@ -35,7 +36,15 @@ public final class YandexLoginSDK: NSObject {
         
         return LoginResult(dictionary: loginResultAsDictionary)
     }
-    
+
+    private func loginResultForClientID(_ clientID: String) -> LoginResult? {
+        guard let loginResultAsDictionary = try? SpecializedStorages.loginResultStorage(clientID: clientID).loadObject() else {
+            return nil
+        }
+
+        return LoginResult(dictionary: loginResultAsDictionary)
+    }
+
     private override init() { super.init() }
     
     public func activate(with clientID: String, authorizationStrategy: AuthorizationStrategy = .default) throws {
@@ -95,7 +104,7 @@ public final class YandexLoginSDK: NSObject {
     }
     
     public func isURLRelatedToSDK(url: URL) -> Bool {
-        guard let clientID = self.clientID else { return false }
+        guard let clientID = latestClientID else { return false }
         return URLUtilities.isURLSchemeDefinedBySDK(url: url, clientID: clientID)
     }
     
@@ -106,27 +115,56 @@ public final class YandexLoginSDK: NSObject {
     public func remove(observer: any YandexLoginSDKObserver) {
         self.observersController.remove(observer)
     }
-    
+
     public func authorize(
         with parentViewController: UIViewController,
         customValues: [String: String]? = nil,
         authorizationStrategy: AuthorizationStrategy = .default
     ) throws {
-        guard let clientID = self.clientID else {
+        try authorize(
+            with: self.clientID,
+            parentViewController: parentViewController,
+            customValues: customValues,
+            authorizationStrategy: authorizationStrategy)
+    }
+
+    public func authorize(
+        with clientID: String?,
+        parentViewController: UIViewController,
+        customValues: [String: String]? = nil,
+        authorizationStrategy: AuthorizationStrategy = .default
+    ) throws {
+        guard let clientID else {
             throw CoreLoginSDKError.loginSDKIsNotActivated
         }
-        
-        if let loginResult = self.loginResult {
-            self.observersController.notifyLoginDidFinish(with: .success(loginResult))
-            return
+
+        try ActivationValidator.validateActivation(with: clientID, authorizationStrategy: authorizationStrategy)
+
+        let isDefaultClient = clientID == self.clientID
+        latestClientID = clientID
+
+        if isDefaultClient {
+            if let loginResult = self.loginResult {
+                self.observersController.notifyLoginDidFinish(with: .success(loginResult))
+                return
+            }
+        } else {
+            if let loginResult = self.loginResultForClientID(clientID) {
+                self.observersController.notifyLoginDidFinish(with: .success(loginResult))
+                return
+            }
         }
-        
-        let state = try StatesManager.generateNewState()
+
+        let state = isDefaultClient ? try StatesManager.generateNewState() : try StatesManager.generateNewState(clientID: clientID)
         latestState = state
         let pkce = try PKCE()
-        
-        try SharedStorages.codeVerifierStorage.save(object: pkce.codeVerifierAsDictionary)
-        
+
+        if isDefaultClient {
+            try SharedStorages.codeVerifierStorage.save(object: pkce.codeVerifierAsDictionary)
+        } else {
+            try SpecializedStorages.codeVerifierStorage(clientID: clientID).save(object: pkce.codeVerifierAsDictionary)
+        }
+
         var customValuesAsString: String? = nil
         if let customValues {
             let data = try JSONEncoder().encode(customValues)
@@ -164,8 +202,12 @@ public final class YandexLoginSDK: NSObject {
         try? StatesManager.removeAll()
     }
     
-    
-    
+    public func logout(with clientID: String) throws {
+        SpecializedStorages.loginResultStorage(clientID: clientID).removeObject()
+        SpecializedStorages.codeVerifierStorage(clientID: clientID).removeObject()
+        try? StatesManager.removeAll(clientID: clientID)
+    }
+
     private func handleOpenWithUniversalLink(with url: URL) throws {
         if let error = try? URLUtilities.urlComponentParameterValue(
             url: url,
@@ -177,13 +219,23 @@ public final class YandexLoginSDK: NSObject {
         
         let token = try URLUtilities.urlComponentParameterValue(url: url, component: .fragment, pararmeter: .code)
         let state = try URLUtilities.urlComponentParameterValue(url: url, component: .fragment, pararmeter: .state)
-        
-        guard try StatesManager.checkStateValidity(state) else {
-            throw CoreLoginSDKError.couldntFindStateInStatesManager(state: state)
+
+        if latestClientID == self.clientID {
+            guard try StatesManager.checkStateValidity(state) else {
+                throw CoreLoginSDKError.couldntFindStateInStatesManager(state: state)
+            }
+            try StatesManager.remove(state: state)
+
+            try self.requestJWT(with: token)
+        } else {
+            guard try StatesManager.checkStateValidity(state, clientID: latestClientID) else {
+                throw CoreLoginSDKError.couldntFindStateInStatesManager(state: state)
+            }
+            try StatesManager.remove(state: state, clientID: latestClientID)
+
+            try self.requestJWT(with: token, clientID: latestClientID)
         }
-        try StatesManager.remove(state: state)
-        
-        try self.requestJWT(with: token)
+
         self.safariViewController?.dismiss(animated: true)
     }
     
@@ -198,17 +250,30 @@ public final class YandexLoginSDK: NSObject {
         
         let code = try URLUtilities.urlComponentParameterValue(url: url, component: .query, pararmeter: .code)
         let state = try URLUtilities.urlComponentParameterValue(url: url, component: .query, pararmeter: .state)
-        
-        guard try StatesManager.checkStateValidity(state) else {
-            throw CoreLoginSDKError.couldntFindStateInStatesManager(state: state)
+
+        if latestClientID == self.clientID {
+            guard try StatesManager.checkStateValidity(state) else {
+                throw CoreLoginSDKError.couldntFindStateInStatesManager(state: state)
+            }
+            try StatesManager.remove(state: state)
+
+            let codeVerifierAsDictionary = try SharedStorages.codeVerifierStorage.loadObject()
+            let pkce = try PKCE(from: codeVerifierAsDictionary)
+
+            let codeVerifier = pkce.codeVerifier
+            try self.requestToken(with: code, codeVerifier: codeVerifier)
+        } else {
+            guard try StatesManager.checkStateValidity(state, clientID: latestClientID) else {
+                throw CoreLoginSDKError.couldntFindStateInStatesManager(state: state)
+            }
+            try StatesManager.remove(state: state, clientID: latestClientID)
+
+            let codeVerifierAsDictionary = try SpecializedStorages.codeVerifierStorage(clientID: latestClientID ?? "").loadObject()
+            let pkce = try PKCE(from: codeVerifierAsDictionary)
+
+            let codeVerifier = pkce.codeVerifier
+            try self.requestToken(with: code, codeVerifier: codeVerifier, clientID: latestClientID)
         }
-        try StatesManager.remove(state: state)
-        
-        let codeVerifierAsDictionary = try SharedStorages.codeVerifierStorage.loadObject()
-        let pkce = try PKCE(from: codeVerifierAsDictionary)
-        
-        let codeVerifier = pkce.codeVerifier
-        try self.requestToken(with: code, codeVerifier: codeVerifier)
         self.safariViewController?.dismiss(animated: true)
     }
     
@@ -269,7 +334,7 @@ public final class YandexLoginSDK: NSObject {
         with url: URL,
         parentViewController parent: UIViewController
     ) {
-        guard let clientID = self.clientID else {
+        guard let clientID = latestClientID else {
             fatalError("Client ID must not be nil at this point.")
         }
         
@@ -313,14 +378,15 @@ public final class YandexLoginSDK: NSObject {
         parent.present(safariViewController, animated: true)
     }
     
-    private func requestToken(with code: String, codeVerifier: String) throws {
-        guard let clientID = self.clientID else { return }
-        let requestComponents = TokenRequestComponents(code: code, codeVerifier: codeVerifier, clientID: clientID)
+    private func requestToken(with code: String, codeVerifier: String, clientID: String? = nil) throws {
+
+        guard let fixedClientID = clientID ?? self.clientID else { return }
+        let requestComponents = TokenRequestComponents(code: code, codeVerifier: codeVerifier, clientID: fixedClientID)
         try self.httpClient.executeRequest(
             with: requestComponents,
             onSuccess: { [weak self] token in
                 do {
-                    try self?.requestJWT(with: token)
+                    try self?.requestJWT(with: token, clientID: clientID)
                 } catch {
                     self?.failureHandler(with: error)
                 }
@@ -331,7 +397,7 @@ public final class YandexLoginSDK: NSObject {
         )
     }
     
-    private func requestJWT(with token: String) throws {
+    private func requestJWT(with token: String, clientID: String? = nil) throws {
         let requestComponents = JWTRequestComponents(token: token)
         try self.httpClient.executeRequest(
             with: requestComponents,
@@ -339,7 +405,11 @@ public final class YandexLoginSDK: NSObject {
                 let result = LoginResult(token: token, jwt: jwt)
                 
                 do {
-                    try SharedStorages.loginResultStorage.save(object: result.asDictionary)
+                    if clientID != nil {
+                        try SpecializedStorages.loginResultStorage(clientID: clientID ?? "").save(object: result.asDictionary)
+                    } else {
+                        try SharedStorages.loginResultStorage.save(object: result.asDictionary)
+                    }
                 } catch {
                     self?.failureHandler(with: error)
                     return
