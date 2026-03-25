@@ -4,9 +4,11 @@ import Foundation
 enum StatesManager {
     
     static let storageCapacity = 50
-    
-    static func generateNewState() throws -> String {
-        var object = try SharedStorages.statesStorage.loadObject()
+
+    static func generateNewState(clientID: String? = nil) throws -> String {
+        let storage = clientID != nil ? SpecializedStorages.statesStorage(clientID: clientID!) : SharedStorages.statesStorage
+
+        var object = try storage.loadObject()
         var state: String
         repeat {
             state = UUID().uuidString
@@ -26,25 +28,29 @@ enum StatesManager {
             object[state] = Date()
         }
         
-        try SharedStorages.statesStorage.save(object: object)
+        try storage.save(object: object)
         return state
     }
-    
-    static func checkStateValidity(_ state: String) throws -> Bool {
-        let states = try SharedStorages.statesStorage.loadObject()
+
+    static func checkStateValidity(_ state: String, clientID: String? = nil) throws -> Bool {
+        let storage = clientID != nil ? SpecializedStorages.statesStorage(clientID: clientID!) : SharedStorages.statesStorage
+
+        let states = try storage.loadObject()
         return states[state] != nil
     }
-    
-    static func remove(state: String) throws {
-        var states = try SharedStorages.statesStorage.loadObject()
+
+    static func remove(state: String, clientID: String? = nil) throws {
+        let storage = clientID != nil ? SpecializedStorages.statesStorage(clientID: clientID!) : SharedStorages.statesStorage
+        var states = try storage.loadObject()
         states[state] = nil
-        try SharedStorages.statesStorage.save(object: states)
+        try storage.save(object: states)
     }
     
-    static func removeAll() throws {
-        try SharedStorages.statesStorage.removeObject()
+    static func removeAll(clientID: String? = nil) throws {
+        let storage = clientID != nil ? SpecializedStorages.statesStorage(clientID: clientID!) : SharedStorages.statesStorage
+        try storage.removeObject()
     }
-    
+
     private static func stateWithEarliestDate(_ object: [String: Date]) -> String? {
         var earliestDate: Date? = nil
         var stateWithEarliestDate: String? = nil
