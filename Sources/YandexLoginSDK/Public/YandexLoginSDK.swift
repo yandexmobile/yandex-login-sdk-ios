@@ -12,7 +12,7 @@ public final class YandexLoginSDK: NSObject {
     }
     
     public static let shared = YandexLoginSDK()
-    public static let version: String = "3.1.0"
+    public static let version: String = "3.1.1"
     
     private var clientID: String?
     private var observersController = ObserversController()
@@ -427,7 +427,7 @@ public final class YandexLoginSDK: NSObject {
         self.observersController.notifyLoginDidFinish(with: .failure(error))
     }
 
-    func getLatestState() -> String? {
+    public func getLatestState() -> String? {
         latestState
     }
 }
