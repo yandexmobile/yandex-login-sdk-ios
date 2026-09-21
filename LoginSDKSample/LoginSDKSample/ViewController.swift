@@ -2,12 +2,45 @@
 import UIKit
 import YandexLoginSDK
 
+enum ClientIDs: String {
+    case defaultId = "57a8133c69d947388a67164dfdbc46d3"
+    case withChildId = "3e20d6a92fa34a73a4b65838ef047c54"
+    case testId = "e59824a58e2f440aa358f2b3eb13e364"
+}
+
+let savedClientIdKey : String = "SavedClientIDKey"
+
+func clientNumFromId(cliendId: String) -> Int {
+    if cliendId == ClientIDs.defaultId.rawValue {
+        return 0
+    } else if cliendId == ClientIDs.withChildId.rawValue {
+        return 1
+    } else if cliendId == ClientIDs.testId.rawValue {
+        return 2
+    }
+    return 0
+}
+
+func clientIdFromNum(clientIndex: Int) -> String {
+    if clientIndex == 0 {
+        return ClientIDs.defaultId.rawValue
+    } else if clientIndex == 1 {
+        return ClientIDs.withChildId.rawValue
+    } else if clientIndex == 2 {
+        return ClientIDs.testId.rawValue
+    }
+    return ClientIDs.defaultId.rawValue
+}
+
 final class ViewController: UIViewController {
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var clientIDSelector: UISegmentedControl!
+    @IBOutlet weak var webViewSwitch: UISwitch!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var logoutButton: UIButton!
-    
+    @IBOutlet weak var logoutWithChildButton: UIButton!
+
     private var customValues: [String: String] = [:]
     private var customValuesAsArray: [(key: String, value: String)] = []
     private var authorizationSource: YandexLoginSDK.AuthorizationStrategy = .default
@@ -16,7 +49,17 @@ final class ViewController: UIViewController {
             logoutButton.isEnabled = (loginResult != nil)
         }
     }
-    
+    private var loginWithChildResult: LoginResult? {
+        didSet {
+            logoutWithChildButton.isEnabled = (loginWithChildResult != nil)
+        }
+    }
+    private var didStartWithCustomID = false
+    private let useWebViewKey = "UseWKWebView"
+    private var webAuthorizationMethod: YandexLoginSDK.WebAuthorizationMethod {
+        self.webViewSwitch.isOn ? .webView : .system
+    }
+
     private let decoder = JSONDecoder()
     private let encoder = JSONEncoder()
     
@@ -38,6 +81,7 @@ final class ViewController: UIViewController {
         super.viewDidLoad()
         
         self.title = "Yandex LoginSDK \(YandexLoginSDK.version)"
+        self.webViewSwitch.isOn = UserDefaults.standard.bool(forKey: self.useWebViewKey)
         self.loadCustomValues()
         self.customValuesAsArray = self.customValues.map { ($0, $1) }
         
@@ -46,6 +90,8 @@ final class ViewController: UIViewController {
         self.tableView.register(CustomValuesCell.self, forCellReuseIdentifier: CustomValuesCell.reuseIdentfier)
         
         YandexLoginSDK.shared.add(observer: self)
+        
+        self.clientIDSelector.selectedSegmentIndex = UserDefaults.standard.integer(forKey: savedClientIdKey)
     }
     
     private func loadCustomValues() {
@@ -71,6 +117,10 @@ final class ViewController: UIViewController {
         }
     }
     
+    @IBAction func webViewSwitchChanged(_ sender: UISwitch) {
+        UserDefaults.standard.set(sender.isOn, forKey: self.useWebViewKey)
+    }
+
     @IBAction func loginButtonPressed(_ sender: UIButton) {
         do {
             let authorizationStrategy: YandexLoginSDK.AuthorizationStrategy
@@ -84,17 +134,46 @@ final class ViewController: UIViewController {
             default:
                 fatalError("Segmented control is configured to only have 2 segments.")
             }
-            
+
+            didStartWithCustomID = false
             try YandexLoginSDK.shared.authorize(
                 with: self,
                 customValues: self.customValues.isEmpty ? nil : self.customValues,
-                authorizationStrategy: authorizationStrategy
+                authorizationStrategy: authorizationStrategy,
+                webAuthorizationMethod: self.webAuthorizationMethod
             )
         } catch {
             self.errorOccured(error)
         }
     }
-    
+
+    @IBAction func loginWithChildButtonPressed(_ sender: UIButton) {
+        do {
+            let authorizationStrategy: YandexLoginSDK.AuthorizationStrategy
+            switch self.segmentedControl.selectedSegmentIndex {
+            case 0:
+                authorizationStrategy = .default
+            case 1:
+                authorizationStrategy = .webOnly
+            case 2:
+                authorizationStrategy = .primaryOnly
+            default:
+                fatalError("Segmented control is configured to only have 2 segments.")
+            }
+
+            didStartWithCustomID = true
+            try YandexLoginSDK.shared.authorize(
+                with: ClientIDs.withChildId.rawValue,
+                parentViewController: self,
+                customValues: self.customValues.isEmpty ? nil : self.customValues,
+                authorizationStrategy: authorizationStrategy,
+                webAuthorizationMethod: self.webAuthorizationMethod
+            )
+        } catch {
+            self.errorOccured(error)
+        }
+    }
+
     @IBAction func logoutButtonPressed(_ sender: UIButton) {
         do {
             try YandexLoginSDK.shared.logout()
@@ -103,7 +182,16 @@ final class ViewController: UIViewController {
             self.errorOccured(error)
         }
     }
-    
+
+    @IBAction func logoutWithChildButtonPressed(_ sender: UIButton) {
+        do {
+            try YandexLoginSDK.shared.logout(with: ClientIDs.withChildId.rawValue)
+            self.loginWithChildResult = nil
+        } catch {
+            self.errorOccured(error)
+        }
+    }
+
     @IBAction func infoButtonPressed(_ sender: UIBarButtonItem) {
         let alertController: UIAlertController
         
@@ -175,6 +263,17 @@ final class ViewController: UIViewController {
             totalValues += 1
         }
     }
+    
+    @IBAction func cliendIDSwitchChanged(_ sender: UISegmentedControl) {
+        UserDefaults.standard.set(sender.selectedSegmentIndex, forKey: savedClientIdKey)
+        let clientId = clientIdFromNum(clientIndex: sender.selectedSegmentIndex)
+        do {
+            try YandexLoginSDK.shared.activate(with: clientId)
+        } catch {
+            UIApplication.shared.keyWindow?.rootViewController?.errorOccured(error)
+        }
+    }
+    
 }
 
 extension ViewController: UITableViewDelegate {
@@ -225,7 +324,11 @@ extension ViewController: YandexLoginSDKObserver {
     func didFinishLogin(with result: Result<LoginResult, Error>) {
         switch result {
         case .success(let loginResult):
-            self.loginResult = loginResult
+            if didStartWithCustomID {
+                self.loginWithChildResult = loginResult
+            } else {
+                self.loginResult = loginResult
+            }
         case .failure(let error):
             self.errorOccured(error)
         }

@@ -1,9 +1,13 @@
 
 import Foundation
+#if SWIFT_PACKAGE
+import CertificateTransparency
+#endif
 
 final class SessionManager: NSObject {
     
     private(set) lazy var session = URLSession(configuration: .default, delegate: self, delegateQueue: nil)
+    private let certificateTransparency = CertificateTransparency()
     private var delegateStorage = URLSessionDataTaskDelegateStorage()
     
     static let shared = SessionManager()
@@ -19,6 +23,23 @@ final class SessionManager: NSObject {
     
 }
 
+// MARK: - URLSessionDelegate
+
+extension SessionManager {
+
+    func urlSession(
+        _ session: URLSession,
+        didReceive challenge: URLAuthenticationChallenge,
+        completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void
+    ) {
+        self.certificateTransparency.handleChallenge(
+            with: challenge.protectionSpace,
+            completionHandler: completionHandler
+        )
+    }
+
+}
+
 // MARK: - URLSessionTaskDelegate
 
 extension SessionManager: URLSessionTaskDelegate {
@@ -29,7 +50,18 @@ extension SessionManager: URLSessionTaskDelegate {
         didReceive challenge: URLAuthenticationChallenge,
         completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void
     ) {
-        guard let dataTask = task as? URLSessionDataTask else { return }
+        if challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust {
+            self.certificateTransparency.handleChallenge(
+                with: challenge.protectionSpace,
+                completionHandler: completionHandler
+            )
+            return
+        }
+
+        guard let dataTask = task as? URLSessionDataTask else {
+            completionHandler(.performDefaultHandling, nil)
+            return
+        }
         
         if let delegate = self.delegateStorage.getDelegate(for: dataTask) {
             delegate.dataTask(dataTask, didReceive: challenge, completionHandler: completionHandler)

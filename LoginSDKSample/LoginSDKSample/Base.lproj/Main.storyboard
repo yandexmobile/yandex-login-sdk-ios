@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MVe-nk-pEf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24412" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MVe-nk-pEf">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24405"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,18 +18,40 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="5jZ-Mh-D8j">
-                                <rect key="frame" x="20" y="64" width="374" height="32"/>
+                                <rect key="frame" x="20" y="94" width="374" height="32"/>
                                 <segments>
                                     <segment title="Default"/>
                                     <segment title="Web"/>
                                     <segment title="Primary Only"/>
                                 </segments>
                             </segmentedControl>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="mMs-G8-EE0">
+                                <rect key="frame" x="20" y="133" width="374" height="32"/>
+                                <segments>
+                                    <segment title="Prod"/>
+                                    <segment title="Prod + Child"/>
+                                    <segment title="Test"/>
+                                </segments>
+                                <connections>
+                                    <action selector="cliendIDSwitchChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="jOW-b5-cMt"/>
+                                </connections>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="WKWebView" translatesAutoresizingMaskIntoConstraints="NO" id="WKv-la-bel">
+                                <rect key="frame" x="20" y="180" width="280" height="31"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WKv-sw-tch">
+                                <rect key="frame" x="345" y="180" width="51" height="31"/>
+                                <accessibility key="accessibilityConfiguration" identifier="webViewSwitch" label="WKWebView"/>
+                                <connections>
+                                    <action selector="webViewSwitchChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="WKv-ac-tion"/>
+                                </connections>
+                            </switch>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="M7y-GB-xZi">
-                                <rect key="frame" x="20" y="159" width="374" height="499"/>
+                                <rect key="frame" x="20" y="224" width="374" height="376"/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eF5-em-vyK">
-                                <rect key="frame" x="20" y="666" width="183" height="50"/>
+                                <rect key="frame" x="20" y="608" width="183" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="cl8-PX-zyn"/>
                                 </constraints>
@@ -43,7 +65,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="70B-3O-s0q">
-                                <rect key="frame" x="211" y="666" width="183" height="50"/>
+                                <rect key="frame" x="211" y="608" width="183" height="50"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Logout">
                                     <color key="baseForegroundColor" red="0.21176470588235294" green="0.086274509803921567" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -53,8 +75,33 @@
                                     <action selector="logoutButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IZR-tE-LNx"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sdi-yc-inj">
+                                <rect key="frame" x="20" y="666" width="183" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Ylg-tz-AhT"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Login with child">
+                                    <color key="baseForegroundColor" red="0.21176470589999999" green="0.086274509799999996" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="baseBackgroundColor" red="1" green="0.85882352939999995" blue="0.30196078430000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="loginWithChildButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eRG-iy-ofw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aAr-rK-PED">
+                                <rect key="frame" x="211" y="666" width="183" height="50"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Logout with child">
+                                    <color key="baseForegroundColor" red="0.21176470589999999" green="0.086274509799999996" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="baseBackgroundColor" red="1" green="0.85882352939999995" blue="0.30196078430000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="logoutWithChildButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Noy-ZV-pZq"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Custom Values" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UpE-wU-vTm">
-                                <rect key="frame" x="20" y="107" width="250" height="44"/>
+                                <rect key="frame" x="20" y="172" width="250" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="zzx-fa-Gmp"/>
                                 </constraints>
@@ -63,7 +110,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="erI-qN-WAS">
-                                <rect key="frame" x="286" y="116.66666666666667" width="50" height="34.333333333333329"/>
+                                <rect key="frame" x="286" y="180" width="50" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="AJg-W6-eO1"/>
                                 </constraints>
@@ -74,7 +121,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8a3-Vv-PGD">
-                                <rect key="frame" x="344" y="116.66666666666667" width="50" height="34.333333333333329"/>
+                                <rect key="frame" x="344" y="180" width="50" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="yTg-tT-oeP"/>
                                 </constraints>
@@ -88,27 +135,44 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="eF5-em-vyK" secondAttribute="bottom" constant="20" id="4fk-dE-tmv"/>
+                            <constraint firstItem="WKv-sw-tch" firstAttribute="top" secondItem="mMs-G8-EE0" secondAttribute="bottom" constant="12" id="WKv-to-ppp"/>
+                            <constraint firstItem="WKv-sw-tch" firstAttribute="trailing" secondItem="mMs-G8-EE0" secondAttribute="trailing" id="WKv-tr-ail"/>
+                            <constraint firstItem="WKv-la-bel" firstAttribute="leading" secondItem="mMs-G8-EE0" secondAttribute="leading" id="WKv-le-add"/>
+                            <constraint firstItem="WKv-la-bel" firstAttribute="centerY" secondItem="WKv-sw-tch" secondAttribute="centerY" id="WKv-ce-ntr"/>
+                            <constraint firstItem="WKv-sw-tch" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="WKv-la-bel" secondAttribute="trailing" constant="8" id="WKv-ga-ppp"/>
                             <constraint firstItem="UpE-wU-vTm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="5Xc-iY-jB2"/>
                             <constraint firstItem="5jZ-Mh-D8j" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="6UQ-A3-pZz"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8a3-Vv-PGD" secondAttribute="trailing" constant="20" id="6nU-fd-vtS"/>
                             <constraint firstItem="M7y-GB-xZi" firstAttribute="top" secondItem="erI-qN-WAS" secondAttribute="bottom" constant="8" id="7Pu-IW-BNO"/>
-                            <constraint firstItem="M7y-GB-xZi" firstAttribute="top" secondItem="5jZ-Mh-D8j" secondAttribute="bottom" constant="64" id="8R4-B0-7dW"/>
+                            <constraint firstItem="UpE-wU-vTm" firstAttribute="top" secondItem="WKv-sw-tch" secondAttribute="bottom" constant="8" id="8Yl-lv-Dx3"/>
+                            <constraint firstItem="mMs-G8-EE0" firstAttribute="top" secondItem="5jZ-Mh-D8j" secondAttribute="bottom" constant="8" id="BNo-wy-Hll"/>
                             <constraint firstItem="M7y-GB-xZi" firstAttribute="top" secondItem="8a3-Vv-PGD" secondAttribute="bottom" constant="8" id="EAf-LL-g6e"/>
+                            <constraint firstItem="mMs-G8-EE0" firstAttribute="trailing" secondItem="5jZ-Mh-D8j" secondAttribute="trailing" id="FZp-E4-r98"/>
                             <constraint firstItem="70B-3O-s0q" firstAttribute="height" secondItem="eF5-em-vyK" secondAttribute="height" id="Hsj-Bg-N3t"/>
+                            <constraint firstItem="70B-3O-s0q" firstAttribute="width" secondItem="eF5-em-vyK" secondAttribute="width" id="K3o-IY-BYY"/>
+                            <constraint firstItem="aAr-rK-PED" firstAttribute="width" secondItem="Sdi-yc-inj" secondAttribute="width" id="KK3-dc-pFf"/>
                             <constraint firstItem="M7y-GB-xZi" firstAttribute="top" secondItem="UpE-wU-vTm" secondAttribute="bottom" constant="8" id="PmS-0i-GtS"/>
                             <constraint firstItem="eF5-em-vyK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="RYq-Vw-1Tp"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="70B-3O-s0q" secondAttribute="bottom" constant="20" id="d7t-8d-krG"/>
+                            <constraint firstItem="aAr-rK-PED" firstAttribute="top" secondItem="70B-3O-s0q" secondAttribute="bottom" constant="8" id="ULP-qY-tK1"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="aAr-rK-PED" secondAttribute="bottom" constant="20" id="UTZ-iu-fdI"/>
+                            <constraint firstItem="8a3-Vv-PGD" firstAttribute="top" secondItem="WKv-sw-tch" secondAttribute="bottom" constant="16" id="Xur-L9-CXm"/>
+                            <constraint firstItem="aAr-rK-PED" firstAttribute="leading" secondItem="Sdi-yc-inj" secondAttribute="trailing" constant="8" id="c8j-7k-iJ6"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="aAr-rK-PED" secondAttribute="trailing" constant="20" id="cd8-Nh-mDR"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Sdi-yc-inj" secondAttribute="bottom" constant="20" id="dnY-Vo-750"/>
                             <constraint firstItem="5jZ-Mh-D8j" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="fw8-fS-GwU"/>
+                            <constraint firstItem="aAr-rK-PED" firstAttribute="height" secondItem="Sdi-yc-inj" secondAttribute="height" id="gcW-Dj-i2X"/>
+                            <constraint firstItem="Sdi-yc-inj" firstAttribute="top" secondItem="eF5-em-vyK" secondAttribute="bottom" constant="8" id="gdG-fX-1Cb"/>
                             <constraint firstItem="70B-3O-s0q" firstAttribute="top" secondItem="M7y-GB-xZi" secondAttribute="bottom" constant="8" id="i2z-cG-TNN"/>
+                            <constraint firstItem="mMs-G8-EE0" firstAttribute="leading" secondItem="5jZ-Mh-D8j" secondAttribute="leading" id="iFl-UR-aQj"/>
+                            <constraint firstItem="70B-3O-s0q" firstAttribute="leading" secondItem="eF5-em-vyK" secondAttribute="trailing" constant="8" id="lKT-8Q-lml"/>
                             <constraint firstItem="M7y-GB-xZi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="lgc-El-4Ta"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5jZ-Mh-D8j" secondAttribute="trailing" constant="20" id="m3p-71-1oJ"/>
                             <constraint firstItem="8a3-Vv-PGD" firstAttribute="leading" secondItem="erI-qN-WAS" secondAttribute="trailing" constant="8" id="nE0-nU-Cm9"/>
-                            <constraint firstItem="70B-3O-s0q" firstAttribute="leading" secondItem="eF5-em-vyK" secondAttribute="trailing" constant="8" id="oQz-dT-ut8"/>
-                            <constraint firstItem="eF5-em-vyK" firstAttribute="width" secondItem="70B-3O-s0q" secondAttribute="width" id="uJD-VM-IIU"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="M7y-GB-xZi" secondAttribute="trailing" constant="20" id="vkk-LY-FjK"/>
                             <constraint firstItem="erI-qN-WAS" firstAttribute="leading" secondItem="UpE-wU-vTm" secondAttribute="trailing" constant="16" id="wPO-fz-Nr7"/>
+                            <constraint firstItem="erI-qN-WAS" firstAttribute="top" secondItem="WKv-sw-tch" secondAttribute="bottom" constant="16" id="wcP-E5-F2h"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="70B-3O-s0q" secondAttribute="trailing" constant="20" id="z4x-xJ-ISX"/>
+                            <constraint firstItem="Sdi-yc-inj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="zdb-7U-jbi"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="XEs-2K-d4T">
@@ -120,7 +184,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="webViewSwitch" destination="WKv-sw-tch" id="WKv-ou-let"/>
+                        <outlet property="clientIDSelector" destination="mMs-G8-EE0" id="Eeq-Q8-sZd"/>
                         <outlet property="logoutButton" destination="70B-3O-s0q" id="N0n-4d-oXL"/>
+                        <outlet property="logoutWithChildButton" destination="aAr-rK-PED" id="FlU-V6-81L"/>
                         <outlet property="segmentedControl" destination="5jZ-Mh-D8j" id="2Vr-cn-p0G"/>
                         <outlet property="tableView" destination="M7y-GB-xZi" id="UHP-zh-Jat"/>
                         <outlet property="view" destination="8bC-Xf-vdC" id="LSl-3u-k7F"/>
@@ -141,7 +208,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MVe-nk-pEf" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bgm-Ue-pkF">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="54"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

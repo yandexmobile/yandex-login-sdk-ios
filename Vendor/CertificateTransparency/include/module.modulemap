@@ -1,0 +1,4 @@
+module CertificateTransparency {
+    header "../CertificateTransparency.h"
+    export *
+}
