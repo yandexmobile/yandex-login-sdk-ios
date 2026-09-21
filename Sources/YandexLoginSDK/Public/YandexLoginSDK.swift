@@ -11,14 +11,23 @@ public final class YandexLoginSDK: NSObject {
         
     }
     
+    /// Selects the browser used when authorization reaches the web flow.
+    public enum WebAuthorizationMethod {
+        /// ASWebAuthenticationSession on iOS 13+, SFSafariViewController on iOS 12.
+        case system
+        /// An embedded WKWebView with CertificateTransparency verification.
+        case webView
+    }
+
     public static let shared = YandexLoginSDK()
-    public static let version: String = "3.1.1"
+    public static let version: String = "3.0.2"
     
     private var clientID: String?
     private var observersController = ObserversController()
     private var httpClient = HTTPClient()
     private var presentationController: UIViewController?
     private var safariViewController: SFSafariViewController?
+    private var webViewController: WebAuthorizationViewController?
     private var webAuthenticationSession: ASWebAuthenticationSession?
     private var latestState: String?
     private var latestClientID: String?
@@ -100,6 +109,7 @@ public final class YandexLoginSDK: NSObject {
             throw CoreLoginSDKError.urlIsNotRelatedToLoginSDK(url: url)
         }
         
+        if self.webViewController?.handleCallbackURL(url) == true { return }
         try self.handleOpenWithDeepLink(with: url)
     }
     
@@ -119,20 +129,23 @@ public final class YandexLoginSDK: NSObject {
     public func authorize(
         with parentViewController: UIViewController,
         customValues: [String: String]? = nil,
-        authorizationStrategy: AuthorizationStrategy = .default
+        authorizationStrategy: AuthorizationStrategy = .default,
+        webAuthorizationMethod: WebAuthorizationMethod = .system
     ) throws {
         try authorize(
             with: self.clientID,
             parentViewController: parentViewController,
             customValues: customValues,
-            authorizationStrategy: authorizationStrategy)
+            authorizationStrategy: authorizationStrategy,
+            webAuthorizationMethod: webAuthorizationMethod)
     }
 
     public func authorize(
         with clientID: String?,
         parentViewController: UIViewController,
         customValues: [String: String]? = nil,
-        authorizationStrategy: AuthorizationStrategy = .default
+        authorizationStrategy: AuthorizationStrategy = .default,
+        webAuthorizationMethod: WebAuthorizationMethod = .system
     ) throws {
         guard let clientID else {
             throw CoreLoginSDKError.loginSDKIsNotActivated
@@ -185,13 +198,14 @@ public final class YandexLoginSDK: NSObject {
         let primaciesStack = ApplicationPrimacy.primacies(for: authorizationStrategy) ?? []
         switch authorizationStrategy {
         case .webOnly:
-            self.performWebAuthorization(with: webURL, parentViewController: parentViewController)
+            self.performWebAuthorization(with: webURL, parentViewController: parentViewController, method: webAuthorizationMethod)
         default:
             self.performAppAuthorization(
                 with: primaciesStack,
                 parentViewController: parentViewController,
                 authorizationParameters: authorizationParameters,
-                fallbackWebURL: webURL
+                fallbackWebURL: webURL,
+                webAuthorizationMethod: webAuthorizationMethod
             )
         }
     }
@@ -281,10 +295,11 @@ public final class YandexLoginSDK: NSObject {
         with primaciesStack: [ApplicationPrimacy],
         parentViewController: UIViewController,
         authorizationParameters: AuthorizationParameters,
-        fallbackWebURL webURL: URL
+        fallbackWebURL webURL: URL,
+        webAuthorizationMethod: WebAuthorizationMethod
     ) {
         guard let primacy = primaciesStack.last else {
-            self.performWebAuthorization(with: webURL, parentViewController: parentViewController)
+            self.performWebAuthorization(with: webURL, parentViewController: parentViewController, method: webAuthorizationMethod)
             return
         }
         
@@ -294,7 +309,8 @@ public final class YandexLoginSDK: NSObject {
                 with: poppedPrimaciesStack,
                 parentViewController: parentViewController,
                 authorizationParameters: authorizationParameters,
-                fallbackWebURL: webURL
+                fallbackWebURL: webURL,
+                webAuthorizationMethod: webAuthorizationMethod
             )
         }
         
@@ -321,7 +337,16 @@ public final class YandexLoginSDK: NSObject {
         }
     }
     
-    private func performWebAuthorization(with url: URL, parentViewController parent: UIViewController) {
+    private func performWebAuthorization(
+        with url: URL,
+        parentViewController parent: UIViewController,
+        method: WebAuthorizationMethod
+    ) {
+        if method == .webView {
+            self.performWebAuthorizationUsingWebView(with: url, parentViewController: parent)
+            return
+        }
+
         if #available(iOS 13.0, *) {
             self.performWebAuthorizationUsingAuthenticationServices(with: url, parentViewController: parent)
         } else {
@@ -329,6 +354,28 @@ public final class YandexLoginSDK: NSObject {
         }
     }
     
+    private func performWebAuthorizationUsingWebView(with url: URL, parentViewController parent: UIViewController) {
+        guard let clientID = self.latestClientID else { return }
+        let controller = WebAuthorizationViewController(url: url, clientID: clientID) { [weak self] result in
+            guard let self else { return }
+            self.webViewController = nil
+            switch result {
+            case .success(let callbackURL):
+                do {
+                    try self.handleOpenWithDeepLink(with: callbackURL)
+                } catch {
+                    self.failureHandler(with: error)
+                }
+            case .failure(let error):
+                self.failureHandler(with: error)
+            }
+        }
+        self.webViewController = controller
+        let navigationController = UINavigationController(rootViewController: controller)
+        navigationController.modalPresentationStyle = .fullScreen
+        parent.present(navigationController, animated: true)
+    }
+
     @available(iOS 13.0, *)
     private func performWebAuthorizationUsingAuthenticationServices(
         with url: URL,
